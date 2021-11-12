@@ -8,13 +8,14 @@ package tp2_manip_sahinidis_marquet;
  *
  * @author matth
  */
+
 public class Moussaka { 
     int nbCalories;
     public Moussaka (int val){
         nbCalories = val;
-  }
+    }
     @Override
     public String toString() {
         return String.valueOf(nbCalories);
-  }
+    }
 }

@@ -8,6 +8,7 @@ package tp2_manip_sahinidis_marquet;
  *
  * @author matth
  */
+
 public class Tartiflette { 
     int nbCalories;
     
