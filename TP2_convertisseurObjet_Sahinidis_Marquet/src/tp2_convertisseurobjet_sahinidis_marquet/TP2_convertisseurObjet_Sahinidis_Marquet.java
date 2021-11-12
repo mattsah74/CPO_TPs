@@ -1,7 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+*/
 package tp2_convertisseurobjet_sahinidis_marquet;
 
 import java.util.Scanner;
@@ -14,7 +14,7 @@ import static tp2_convertisseurobjet_sahinidis_marquet.Convertisseur.KelvinVersF
 
 /**
 *
-* @author matthieu et louis
+* @author louis
 */
 public class TP2_convertisseurObjet_Sahinidis_Marquet {
 
@@ -28,7 +28,7 @@ public class TP2_convertisseurObjet_Sahinidis_Marquet {
         //Saisie de la valeur à convertir
         float temp= sc.nextFloat();
         System.out.println("Saisissez la conversion que vous souhaiter effectuer :");
-        //Affichage du mxonde
+        //Affichage du monde
         System.out.println("1/ De Celcius vers Kelvin \n2/ De Kelvin vers Celcius \n3/ De Farenheit vers Celcius \n4/ De Celcius vers Farenheit \n5/ De Kelvin vers Farenheit \n6/ De Farenheit vers Kelvin");
         int rep = sc.nextInt();
         
