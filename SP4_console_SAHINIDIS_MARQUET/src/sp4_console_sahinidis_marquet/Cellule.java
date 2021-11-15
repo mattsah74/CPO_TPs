@@ -9,5 +9,46 @@ package sp4_console_sahinidis_marquet;
  * @author matth
  */
 public class Cellule {
+    Jeton jetonCourant;
+    boolean trouNoir;
+    boolean desintegrateur;
     
-}
+    public Cellule(){ //*initialise les attributs avec des valeurs par défauts*/
+        jetonCourant=null;
+        trouNoir=false;
+        desintegrateur=false;
+    }
+    
+    public boolean affecterJeton(Jeton id){
+        if (jetonCourant==null){
+            jetonCourant=id;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public Jeton recupereJeton(){
+        return jetonCourant;
+    }
+    
+    public boolean supprimerJeton (Jeton id){
+        if (jetonCourant==id){
+            jetonCourant=null;
+            return true;
+        }
+        else{
+            return false;
+        }
+    } 
+    
+    public String lireCouleurDuJeton(){
+        if (jetonCourant!=null){
+            return jetonCourant.Couleur;
+        }
+        else{
+            return "vide";
+        }
+    }
+}   
+
