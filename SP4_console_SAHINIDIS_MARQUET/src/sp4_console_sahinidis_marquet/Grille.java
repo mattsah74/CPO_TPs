@@ -17,18 +17,21 @@ public class Grille {
             }
         }
     }
-    public void ajouterJetonDansColonne(Jeton jet, int c){
+    public boolean ajouterJetonDansColonne(Jeton jet, int c){
         int a =0;
-        if(CellulesJeu[0][c]==null){
+        
+        if(CellulesJeu[0][c].jetonCourant==null){
             for(int i=0; i<=6; i++){
-                if(CellulesJeu[i][c]==null){
-                    a = i;
+                if(CellulesJeu[i][c].jetonCourant==null){
+                    a = i; 
                 }
             }
             CellulesJeu[a][c].affecterJeton(jet);
+            return true;
         }
         else{
             System.out.println("Cette colonne est pleine");
+            return false;
         }
     }
     public boolean etreRemplie(){
@@ -60,6 +63,25 @@ public class Grille {
                 System.out.print(CellulesJeu[j][i]);
             }
         }  System.out.print("\n");
+    }
+    public boolean celluleOccupee(int l, int c){
+        if(CellulesJeu[l][c]== null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public String lireCouleurDuJeton(int l, int c){
+        if (CellulesJeu[l][c]== null){
+            
+        }
+        String couleur = "";
+        Jeton jet;     
+        jet = CellulesJeu[l][c].jetonCourant;
+        couleur = jet.lireCouleur();
+        System.out.print(couleur);
     }
 }
 
