@@ -10,6 +10,7 @@ import java.util.Random;
  * @author matth
  */
 public class Joueur {
+    Jeton [] tab = new Jeton [21];
     String nom;
     String couleur;
     int ListeJetons;
@@ -26,4 +27,7 @@ public class Joueur {
     public void affecterCouleur(String couleur1){
         couleur = couleur1;
     }
+    // public void ajouterJeton(Jeton){
+        
+    
 }
