@@ -103,23 +103,34 @@ public class Grille {
     public boolean etreGagnantePourJoueur(Joueur j1){
         String coul;
         coul = j1.couleur; 
-        int verif = 0; /*variable intermediaire */
         /*verification de gauche à droite*/
+        int verif = 0; /*variable intermediaire */
         for(int c=0; c<=3; c++ ){  
             for (int l=0; l<=5; l++){
-                Jeton jet = new Jeton(coul);
-                if (CellulesJeu[l][c].jetonCourant==null && CellulesJeu[l][c].jetonCourant!=jet){
-                    return false;
+                for(int k=0; k<4; k++){
+                    if(CellulesJeu[l][c+k].lireCouleurDuJeton()==coul){
+                        verif +=1;
+                    }   
                 }
-                else{
-                    for(int k=0; k<4; k++){
-                        if (CellulesJeu[l][c+k].jetonCourant!=null && CellulesJeu[l][c].jetonCourant==jet){
-                            k
-                        }
-                    }
+                if(verif ==4){
+                    return true;
                 }
             }
         } 
+        /*verification de droite à gauche*/
+        int verif2 =0;/*variable intermediaire */
+        for(int c=0; c<=6; c++ ){  
+            for (int l=0; l<=2; l++){
+                for(int k=0; k<4; k++){
+                    if(CellulesJeu[l+k][c].lireCouleurDuJeton()==coul){
+                        verif2 +=1;
+                    }   
+                }
+                if(verif2 ==4){
+                    return true;
+                }
+            }
+        }
     }
 }
 
