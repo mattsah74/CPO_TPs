@@ -101,6 +101,7 @@ public class Grille {
         
     }
     public boolean etreGagnantePourJoueur(Joueur j1){
+        boolean x = false;
         String coul;
         coul = j1.couleur; 
         /*verification de gauche à droite*/
@@ -113,7 +114,7 @@ public class Grille {
                     }   
                 }
                 if(verif ==4){
-                    return true;
+                    x =  true;
                 }
             }
         } 
@@ -127,10 +128,11 @@ public class Grille {
                     }   
                 }
                 if(verif2 ==4){
-                    return true;
+                    x =  true;
                 }
             }
         }
+    return x;
     }
 }
 
