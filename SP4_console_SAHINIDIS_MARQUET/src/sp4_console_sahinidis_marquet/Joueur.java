@@ -19,7 +19,7 @@ public class Joueur {
    // String [] couleur = {"jaune", "rouge"};
     public Joueur(String lenom, String couleur1, int listejet, int nbjetrest, int nbdesint){
         nom = lenom;
-        couleur = couleur1;
+        couleur = couleur1; 
         ListeJetons = listejet;
         nombreJetonsRestants = nbjetrest;
         nombreDesintegrateurs = nbdesint;

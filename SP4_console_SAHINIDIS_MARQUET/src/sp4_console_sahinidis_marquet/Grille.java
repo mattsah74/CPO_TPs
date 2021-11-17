@@ -101,10 +101,22 @@ public class Grille {
         
     }
     public boolean etreGagnantePourJoueur(Joueur j1){
-        for(int c=0; c<=3; c++ ){
+        String coul;
+        coul = j1.couleur; 
+        int verif = 0; /*variable intermediaire */
+        /*verification de gauche à droite*/
+        for(int c=0; c<=3; c++ ){  
             for (int l=0; l<=5; l++){
-                if (CellulesJeu[l][c].jetonCourant==null){
-                    
+                Jeton jet = new Jeton(coul);
+                if (CellulesJeu[l][c].jetonCourant==null && CellulesJeu[l][c].jetonCourant!=jet){
+                    return false;
+                }
+                else{
+                    for(int k=0; k<4; k++){
+                        if (CellulesJeu[l][c+k].jetonCourant!=null && CellulesJeu[l][c].jetonCourant==jet){
+                            k
+                        }
+                    }
                 }
             }
         } 
