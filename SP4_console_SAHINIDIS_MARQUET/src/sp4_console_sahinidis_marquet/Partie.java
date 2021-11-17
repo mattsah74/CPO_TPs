@@ -10,5 +10,6 @@ package sp4_console_sahinidis_marquet;
  */
 
 public class Partie {
-    
+    Joueur [] ListeJoueurs = new Joueur[2];
+    Joueur
 }
