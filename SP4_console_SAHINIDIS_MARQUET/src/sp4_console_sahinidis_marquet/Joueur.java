@@ -16,7 +16,6 @@ public class Joueur {
     int ListeJetons;
     int nombreJetonsRestants;
     int nombreDesintegrateurs;
-   // String [] couleur = {"jaune", "rouge"};
     public Joueur(String lenom, String couleur1, int listejet, int nbjetrest, int nbdesint){
         nom = lenom;
         couleur = couleur1; 
@@ -27,7 +26,15 @@ public class Joueur {
     public void affecterCouleur(String couleur1){
         couleur = couleur1;
     }
-    // public void ajouterJeton(Jeton){
-        
+    public boolean ajouterJeton(Jeton jetonCourant){
+        for(int i=0; i<tab.length;i++){
+            if (tab[i]==null){
+                tab[i]=jetonCourant;
+                nombreJetonsRestants+=1;
+                return true;
+            }
+        }
+        return false;
+    }   
     
 }

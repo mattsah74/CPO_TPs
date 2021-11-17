@@ -16,7 +16,7 @@ public class Grille {
                 CellulesJeu[j][i] = new Cellule();
             }
         }
-    }
+    } 
     public boolean ajouterJetonDansColonne(Jeton jet, int c){
         int a =0;
         
