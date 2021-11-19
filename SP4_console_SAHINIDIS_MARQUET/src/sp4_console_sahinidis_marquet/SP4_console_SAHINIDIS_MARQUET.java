@@ -14,9 +14,9 @@ public class SP4_console_SAHINIDIS_MARQUET {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Grille tab = new Grille();
-        tab.afficherGrilleSurConsole();
-        
+        Partie test = new Partie();
+        test.attribuerCouleursAuxJoueurs();
+        test.debuterPartie();
     }
     
 }

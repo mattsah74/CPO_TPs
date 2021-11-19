@@ -15,11 +15,14 @@ public class Partie {
     Joueur [] ListeJoueurs = new Joueur[2];
     Joueur JoueurCourant;
     Grille grilleJeu;
-    String [] ListeCouleurs = {"jaune", "rouge"};
+    String [] ListeCouleurs = {"J", "R"};
     public void attribuerCouleursAuxJoueurs(){
         double x = Math.random();
-        ListeJoueurs[1].couleur = ListeCouleurs[(int)x];
-        ListeJoueurs[2].couleur = ListeCouleurs[(-(int)x)+1];
+        ListeJoueurs[1].affecterCouleur(ListeCouleurs[(int)x]);
+        ListeJoueurs[2].affecterCouleur(ListeCouleurs[(-(int)x)+1]);
+//        double x = Math.random();
+//        ListeJoueurs[1].couleur = ListeCouleurs[(int)x];
+//        ListeJoueurs[2].couleur = ListeCouleurs[(-(int)x)+1];
     }
     public void debuterPartie(){
         while(grilleJeu.etreRemplie()==false && grilleJeu.etreGagnantePourJoueur(JoueurCourant)){

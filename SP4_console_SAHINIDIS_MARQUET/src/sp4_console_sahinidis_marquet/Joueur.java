@@ -16,12 +16,12 @@ public class Joueur {
     int ListeJetons;
     int nombreJetonsRestants;
     int nombreDesintegrateurs;
-    public Joueur(String lenom, String couleur1, int listejet, int nbjetrest, int nbdesint){
+    public Joueur(String lenom, String couleur1, int listejet, int nbjetrest){
         nom = lenom;
         couleur = couleur1; 
         ListeJetons = listejet;
         nombreJetonsRestants = nbjetrest;
-        nombreDesintegrateurs = nbdesint;
+//        nombreDesintegrateurs = nbdesint;
     }
     public void affecterCouleur(String couleur1){
         couleur = couleur1;
