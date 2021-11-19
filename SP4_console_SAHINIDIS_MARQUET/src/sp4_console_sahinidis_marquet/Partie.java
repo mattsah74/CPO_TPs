@@ -5,7 +5,7 @@
 package sp4_console_sahinidis_marquet;
 
 import java.util.Scanner;
-
+import java.util.Random;
 /**
  *
  * @author matth
@@ -14,18 +14,26 @@ import java.util.Scanner;
 public class Partie {
     Joueur [] ListeJoueurs = new Joueur[2];
     Joueur JoueurCourant;
-    Grille grilleJeu;
+    Grille grilleJeu = new Grille();
     String [] ListeCouleurs = {"J", "R"};
+   
+
     public void attribuerCouleursAuxJoueurs(){
-        double x = Math.random();
-        ListeJoueurs[1].affecterCouleur(ListeCouleurs[(int)x]);
-        ListeJoueurs[2].affecterCouleur(ListeCouleurs[(-(int)x)+1]);
+        Joueur Joueur1 = new Joueur("Joueur1", "c", 0, 0);
+        Joueur Joueur0 = new Joueur("Joueur0", "c", 0, 0);
+        ListeJoueurs[0]= Joueur0;
+        ListeJoueurs[1]= Joueur1;
+        Random rand = new Random();
+        int x = rand.nextInt(2);
+        ListeJoueurs[1].affecterCouleur(ListeCouleurs[x]);
+        ListeJoueurs[0].affecterCouleur(ListeCouleurs[(-x)+1]);
 //        double x = Math.random();
 //        ListeJoueurs[1].couleur = ListeCouleurs[(int)x];
 //        ListeJoueurs[2].couleur = ListeCouleurs[(-(int)x)+1];
     }
     public void debuterPartie(){
-        while(grilleJeu.etreRemplie()==false && grilleJeu.etreGagnantePourJoueur(JoueurCourant)){
+        JoueurCourant = ListeJoueurs[0];
+        while(grilleJeu.etreRemplie()==false && grilleJeu.etreGagnantePourJoueur(JoueurCourant)==false){
             grilleJeu.afficherGrilleSurConsole();
             int coup = 1;
             while(coup<=7 && coup>=1 && grilleJeu.colonneRemplie(coup)){
@@ -37,6 +45,12 @@ public class Partie {
             JoueurCourant.ajouterJeton(jetonCourant);
             grilleJeu.ajouterJetonDansColonne(jetonCourant, coup);
                          
+        }
+        if (JoueurCourant == ListeJoueurs[0]){
+            JoueurCourant = ListeJoueurs[1];
+        }
+        else {
+            JoueurCourant = ListeJoueurs[0];
         }
 //        fin du jeu
     }

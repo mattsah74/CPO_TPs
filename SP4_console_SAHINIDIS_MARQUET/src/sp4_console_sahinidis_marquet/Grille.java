@@ -36,7 +36,7 @@ public class Grille {
         }
     }
     
-    public boolean etreRemplie(){
+    public boolean etreRemplie1(){
         int a=0;
         for(int i=0; i<=6; i++ ){
             for (int j=0; j<=5; j++){
@@ -52,6 +52,19 @@ public class Grille {
             return false;
         }
     }
+    
+    public boolean etreRemplie(){
+        boolean x = true;
+        for (int i=0;i<6;i++){
+            for (int j=0;j<7; j++){
+                 if (CellulesJeu[i][j].jetonCourant==null){
+                     x = false;
+                }
+            }
+        }
+        return x;
+   }
+    
     
     public void viderGrille(){
         for(int i=0; i<=6; i++ ){
@@ -160,5 +173,52 @@ public class Grille {
         }
     return x;
     }
+    
+    public boolean etreGagnantePourJoueur2(Joueur joueur){
+        for (int i=0; i<6; i++){
+            for (int j=0; j<7;j++){
+                if (CellulesJeu[i][j].lireCouleurDuJeton()==joueur.couleur){
+                    if (i<3){
+                        for (int k=0; k<4; k++){
+                            if (CellulesJeu[i+k][j].lireCouleurDuJeton()!=joueur.couleur)
+                                break;
+                            if (k==4){
+                                return true;
+                            }
+                        }
+                    }
+                    if (j<4){
+                        for (int k=0; k<4; k++){
+                            if (CellulesJeu[i][j+k].lireCouleurDuJeton()!=joueur.couleur)
+                                break;
+                            if (k==4){
+                                return true;
+                            }
+                        }
+                    }
+                    if (i<3 && j<4){
+                        for (int k=0; k<4; k++){
+                            if (CellulesJeu[i+k][j+k].lireCouleurDuJeton()!=joueur.couleur)
+                                break;
+                            if (k==4){
+                                return true;
+                            }
+                        }
+                    }
+                    if (i<3 && j>2){
+                        for (int k=0; k<4; k++){
+                            if (CellulesJeu[i+k][j+k].lireCouleurDuJeton()!=joueur.couleur)
+                                break;
+                            if (k==4){
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
 }
 
