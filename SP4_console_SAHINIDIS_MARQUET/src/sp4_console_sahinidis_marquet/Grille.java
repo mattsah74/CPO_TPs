@@ -17,6 +17,7 @@ public class Grille {
             }
         }
     } 
+    
     public boolean ajouterJetonDansColonne(Jeton jet, int c){
         int a =0;
         
@@ -34,6 +35,7 @@ public class Grille {
             return false;
         }
     }
+    
     public boolean etreRemplie(){
         int a=0;
         for(int i=0; i<=6; i++ ){
@@ -50,6 +52,7 @@ public class Grille {
             return false;
         }
     }
+    
     public void viderGrille(){
         for(int i=0; i<=6; i++ ){
             for (int j=0; j<=5; j++){
@@ -57,13 +60,36 @@ public class Grille {
             }
         }  
     }
-    public void afficherGrilleSurConsole(){
-        for(int i=0; i<=6; i++ ){
-            for (int j=0; j<=5; j++){
-                System.out.print(CellulesJeu[j][i].jetonCourant);
+    
+    public void afficherGrilleSurConsole1(){
+        for(int j=0; j<=5; j++){
+            for (int i=0; i<=6; i++ ){
+                System.out.print(CellulesJeu[j][i].jetonCourant + " ");
             }
-        }  System.out.print("\n");
+        }  System.out.println(" ");
     }
+    
+    public void afficherGrilleSurConsole(){
+        for (int i=0; i<6;i++){
+            
+            for (int j=0; j<7; j++){
+                if (CellulesJeu[i][j].jetonCourant==null){
+                    System.out.print("0");
+                }
+                 if ("jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                    System.out.print("J");
+                }
+                if ("rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                    System.out.print("R");
+                }   
+                if(j==6){
+                    System.out.println("");
+                }
+            }
+        }
+    }
+
+    
     public boolean celluleOccupee(int l, int c){
         if(CellulesJeu[l][c].jetonCourant== null){
             return true;
@@ -72,7 +98,7 @@ public class Grille {
             return false;
         }
     }
-    
+   
     public String lireCouleurDuJeton(int l, int c){
         if (CellulesJeu[l][c].jetonCourant== null){
             String couleur = "";
