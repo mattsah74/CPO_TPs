@@ -8,6 +8,8 @@ package sp4_console_sahinidis_marquet;
  *
  * @author matth
  */
+import java.util.Scanner;
+
 public class Cellule {
     Jeton jetonCourant;
     boolean trouNoir;
@@ -28,19 +30,6 @@ public class Cellule {
             return false;
         }
     }
-    public Jeton recupereJeton(){
-        return jetonCourant;
-    }
-    
-    public boolean supprimerJeton (Jeton id){
-        if (jetonCourant==id){
-            jetonCourant=null;
-            return true;
-        }
-        else{
-            return false;
-        }
-    } 
     
     public String lireCouleurDuJeton(){
         if (jetonCourant!=null){
@@ -50,5 +39,19 @@ public class Cellule {
             return "vide";
         }
     }
+//    public Jeton recupereJeton(){
+//        return jetonCourant;
+//    }
+    
+//    public boolean supprimerJeton (Jeton id){
+//        if (jetonCourant==id){
+//            jetonCourant=null;
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+//    } 
+    
 }   
 

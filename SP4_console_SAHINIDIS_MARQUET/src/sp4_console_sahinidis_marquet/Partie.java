@@ -4,6 +4,8 @@
  */
 package sp4_console_sahinidis_marquet;
 
+import java.util.Scanner;
+
 /**
  *
  * @author matth
@@ -22,8 +24,16 @@ public class Partie {
     public void debuterPartie(){
         while(grilleJeu.etreRemplie()==false && grilleJeu.etreGagnantePourJoueur(JoueurCourant)){
             grilleJeu.afficherGrilleSurConsole();
+            int coup = 1;
+            while(coup<=7 && coup>=1 && grilleJeu.colonneRemplie(coup)){
+                Scanner sc;
+                sc = new Scanner(System.in);
+                coup = sc.nextInt();
+            }
+            Jeton jetonCourant = new Jeton(JoueurCourant.couleur);
             JoueurCourant.ajouterJeton(jetonCourant);
-             
+            grilleJeu.ajouterJetonDansColonne(jetonCourant, coup);
+                         
         }
 //        fin du jeu
     }
