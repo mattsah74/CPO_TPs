@@ -124,10 +124,11 @@ public class Grille {
             return ("Il n'y a pas de jeton ici") ;
         }
     }
-    public boolean colonneRemplie(int c){
+    
+    public boolean colonneRemplie1(int c){
         int a =0;
         for(int i=0; i<=5; i++){
-                if(CellulesJeu[i][c].jetonCourant!=null){
+                if(CellulesJeu[i][c].jetonCourant==null){
                     a += 1; 
                 }
         }
@@ -139,6 +140,17 @@ public class Grille {
         }
         
     }
+    
+    public boolean colonneRemplie(int colonne){
+        for (int i=0; i<6; i++){
+            if (CellulesJeu[i][colonne].jetonCourant==null){
+                System.out.println("La colonne est remplie");
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean etreGagnantePourJoueur(Joueur j1){
         boolean x = false;
         String coul;
