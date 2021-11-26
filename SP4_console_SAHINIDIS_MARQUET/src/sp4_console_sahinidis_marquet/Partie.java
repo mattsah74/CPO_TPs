@@ -35,13 +35,15 @@ public class Partie {
         JoueurCourant = ListeJoueurs[0];
         while(grilleJeu.etreRemplie()==false && grilleJeu.etreGagnantePourJoueur(JoueurCourant)==false){
             grilleJeu.afficherGrilleSurConsole();
-            int coup = 1;
-            while(coup<=7 && coup>=1 && grilleJeu.colonneRemplie(coup)==false){
-                Scanner sc;
-                sc = new Scanner(System.in);
+            Scanner sc;
+            sc = new Scanner(System.in);
+            System.out.println("Rentrez la valeur de la colonne");
+            int coup = sc.nextInt();
+            while(coup>6 && coup<0 && grilleJeu.colonneRemplie(coup)==true){
                 System.out.println("Rentrez la valeur de la colonne");
                 coup = sc.nextInt();
-            }
+                }
+            
             Jeton jetonCourant = new Jeton(JoueurCourant.couleur);
             JoueurCourant.ajouterJeton(jetonCourant);
             grilleJeu.ajouterJetonDansColonne(jetonCourant, coup);
