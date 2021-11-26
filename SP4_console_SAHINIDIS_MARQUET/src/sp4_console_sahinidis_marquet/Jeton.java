@@ -6,7 +6,7 @@ package sp4_console_sahinidis_marquet;
 
 /**
  *
- * @author matth
+ * @author matth 
  */
 public class Jeton {
     String Couleur;
