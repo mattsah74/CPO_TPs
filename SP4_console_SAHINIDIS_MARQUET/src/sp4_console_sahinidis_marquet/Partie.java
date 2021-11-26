@@ -15,7 +15,7 @@ public class Partie {
     Joueur [] ListeJoueurs = new Joueur[2];
     Joueur JoueurCourant;
     Grille grilleJeu = new Grille();
-    String [] ListeCouleurs = {"J", "R"};
+    String [] ListeCouleurs = {"jaune", "rouge"};
    
 
     public void attribuerCouleursAuxJoueurs(){
@@ -31,6 +31,7 @@ public class Partie {
 //        ListeJoueurs[1].couleur = ListeCouleurs[(int)x];
 //        ListeJoueurs[2].couleur = ListeCouleurs[(-(int)x)+1];
     }
+    
     public void debuterPartie(){
         JoueurCourant = ListeJoueurs[0];
         while(grilleJeu.etreRemplie()==false && grilleJeu.etreGagnantePourJoueur(JoueurCourant)==false){
@@ -39,20 +40,27 @@ public class Partie {
             sc = new Scanner(System.in);
             System.out.println("Rentrez la valeur de la colonne");
             int coup = sc.nextInt();
-            while(coup>6 && coup<0 && grilleJeu.colonneRemplie(coup)==true){
-                System.out.println("Rentrez la valeur de la colonne");
+            while(coup>6 || coup<0 || grilleJeu.colonneRemplie(coup)==true){
+                System.out.println("Rentrez une bonne valeur de colonne non-remplie");
                 coup = sc.nextInt();
                 }
             
             Jeton jetonCourant = new Jeton(JoueurCourant.couleur);
             JoueurCourant.ajouterJeton(jetonCourant);
             grilleJeu.ajouterJetonDansColonne(jetonCourant, coup);
-                         
+            if (JoueurCourant == ListeJoueurs[0]){
+                JoueurCourant = ListeJoueurs[1];
+            }
+            else {
+                JoueurCourant = ListeJoueurs[0];
+            }            
         }
         if (JoueurCourant == ListeJoueurs[0]){
+            System.out.println("Prochain joueur");
             JoueurCourant = ListeJoueurs[1];
         }
         else {
+            System.out.println("Prochain joueur");
             JoueurCourant = ListeJoueurs[0];
         }
 //        fin du jeu

@@ -16,5 +16,12 @@ public class Jeton {
     public String lireCouleur(){
         return Couleur;
     }
+    public String couleurDuJetonVue(){
+        if ("Jaune".equals(Couleur)){
+            return"\u001B[33m O";
+        }
+        return"\u001B[31m O";
+    }
+
 }
 

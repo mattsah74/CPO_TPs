@@ -43,13 +43,14 @@ public class Grille {
     }
     
     public boolean ajouterJetonDansColonne(Jeton newJeton, int colonne){
-        for (int i=0; i<6; i++){
-            if (CellulesJeu[i][colonne].jetonCourant==null){
-                CellulesJeu[i][colonne].jetonCourant=newJeton;
-                return true;
-            }
+        int i = 5;
+        boolean rep = false;
+        while (i>=0 && CellulesJeu[i][colonne].jetonCourant==null){
+           i--;
         }
-        return false;
+        
+        CellulesJeu[i+1][colonne].jetonCourant = newJeton;
+        return rep;
     }
 
     public boolean etreRemplie1(){
@@ -98,25 +99,21 @@ public class Grille {
     }
     
     public void afficherGrilleSurConsole(){
-        for (int i=0; i<6;i++){
-            
+        for (int i=0; i<6;i++){  
             for (int j=0; j<7; j++){
                 if (CellulesJeu[i][j].jetonCourant==null){
-                    System.out.print("0");
+                    System.out.print("o");
                 }
-                 if ("jaune".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                else if (CellulesJeu[i][j].jetonCourant.Couleur == "jaune"){
                     System.out.print("J");
                 }
-                if ("rouge".equals(CellulesJeu[i][j].lireCouleurDuJeton())){
+                else if (CellulesJeu[i][j].jetonCourant.Couleur== "rouge"){
                     System.out.print("R");
                 }   
-                if(j==6){
-                    System.out.println("");
-                }
             }
+            System.out.println("");  // saute une ligne quand la ligne est finie d'afficher
         }
     }
-
     
     public boolean celluleOccupee(int l, int c){
         if(CellulesJeu[l][c].jetonCourant== null){
@@ -165,7 +162,7 @@ public class Grille {
             }
         }
         return true;
-    }
+    } // colonne remplie 1ere version a garder pour au cas ou
 
     public boolean etreGagnantePourJoueur(Joueur j1){
         boolean x = false;
@@ -210,7 +207,7 @@ public class Grille {
                         for (int k=0; k<4; k++){
                             if (CellulesJeu[i+k][j].lireCouleurDuJeton()!=joueur.couleur)
                                 break;
-                            if (k==4){
+                            if (k==3){
                                 return true;
                             }
                         }
@@ -219,7 +216,7 @@ public class Grille {
                         for (int k=0; k<4; k++){
                             if (CellulesJeu[i][j+k].lireCouleurDuJeton()!=joueur.couleur)
                                 break;
-                            if (k==4){
+                            if (k==3){
                                 return true;
                             }
                         }
@@ -228,7 +225,7 @@ public class Grille {
                         for (int k=0; k<4; k++){
                             if (CellulesJeu[i+k][j+k].lireCouleurDuJeton()!=joueur.couleur)
                                 break;
-                            if (k==4){
+                            if (k==3){
                                 return true;
                             }
                         }
@@ -237,7 +234,7 @@ public class Grille {
                         for (int k=0; k<4; k++){
                             if (CellulesJeu[i+k][j+k].lireCouleurDuJeton()!=joueur.couleur)
                                 break;
-                            if (k==4){
+                            if (k==3){
                                 return true;
                             }
                         }
@@ -246,7 +243,7 @@ public class Grille {
             }
         }
         return false;
-    }
+    }//  1ere version a garder pour au cas ou
 
 }
 
