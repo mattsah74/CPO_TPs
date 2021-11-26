@@ -18,24 +18,40 @@ public class Grille {
         }
     } 
     
-    public boolean ajouterJetonDansColonne(Jeton jet, int c){
-        int a =0;
-        
-        if(CellulesJeu[0][c].jetonCourant==null){
-            for(int i=0; i<=5; i++){
-                if(CellulesJeu[i][c].jetonCourant==null){
-                    a = i; 
-                }
-            }
-            CellulesJeu[a][c].affecterJeton(jet);
-            return true;
+    public boolean ajouterJetonDansColonne1(Jeton jet, int c){
+        int a = 1 ;
+        int b=6;
+        while(CellulesJeu[b][c].jetonCourant==null && b>=0){
+            int d = b;
+            b= d - a;
         }
-        else{
-            System.out.println("Cette colonne est pleine");
-            return false;
-        }
+        CellulesJeu[b][c].affecterJeton(jet);
+        return true;
+//        if(CellulesJeu[0][c].jetonCourant==null){
+//            for(int i=5; i>=0; i--){
+//                if(CellulesJeu[i][c].jetonCourant==null){
+//                    a = i; 
+//                }
+//            }
+//            CellulesJeu[a][c].affecterJeton(jet);
+//            return true;
+//        }
+//        else{
+//            System.out.println("Cette colonne est pleine");
+//            return false;
+//        }
     }
     
+    public boolean ajouterJetonDansColonne(Jeton newJeton, int colonne){
+        for (int i=0; i<6; i++){
+            if (CellulesJeu[i][colonne].jetonCourant==null){
+                CellulesJeu[i][colonne].jetonCourant=newJeton;
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean etreRemplie1(){
         int a=0;
         for(int i=0; i<=6; i++ ){
@@ -65,7 +81,6 @@ public class Grille {
         return x;
    }
     
-    
     public void viderGrille(){
         for(int i=0; i<=6; i++ ){
             for (int j=0; j<=5; j++){
@@ -77,7 +92,7 @@ public class Grille {
     public void afficherGrilleSurConsole1(){
         for(int j=0; j<=5; j++){
             for (int i=0; i<=6; i++ ){
-                System.out.print(CellulesJeu[j][i].jetonCourant + " ");
+                System.out.print(CellulesJeu[j][i].jetonCourant.Couleur + " ");
             }
         }  System.out.println(" ");
     }
@@ -125,7 +140,7 @@ public class Grille {
         }
     }
     
-    public boolean colonneRemplie1(int c){
+    public boolean colonneRemplie(int c){
         int a =0;
         for(int i=0; i<=5; i++){
                 if(CellulesJeu[i][c].jetonCourant==null){
@@ -133,15 +148,16 @@ public class Grille {
                 }
         }
         if(a==0){
-            return false;
+            System.out.println("La colonne est remplie");
+            return true;
         }
         else{
-            return true;
+            return false;
         }
         
     }
     
-    public boolean colonneRemplie(int colonne){
+    public boolean colonneRemplie1(int colonne){
         for (int i=0; i<6; i++){
             if (CellulesJeu[i][colonne].jetonCourant==null){
                 System.out.println("La colonne est remplie");
