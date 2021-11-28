@@ -218,7 +218,7 @@ public class Grille {
         for(int c=0; c<=3; c++ ){  
             for (int l=3; l<=5; l++){
                 for(int k=0; k<4; k++){
-                    if(CellulesJeu[l-k][c-k].lireCouleurDuJeton()==coul){
+                    if(CellulesJeu[l-k][c+k].lireCouleurDuJeton()==coul){
                         verif4 +=1; // si la case suivante est de la meme couleur verif est iteré
                     }   
                 }
