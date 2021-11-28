@@ -165,7 +165,7 @@ public class Grille {
     } // colonne remplie 1ere version a garder pour au cas ou
 
     public boolean etreGagnantePourJoueur(Joueur j1){
-        boolean x = false;
+        boolean x = false; //initialise un valeur de retour false qui changera si la partie est gagnée
         String coul;
         coul = j1.couleur; 
         /*verification de gauche à droite*/
@@ -180,9 +180,10 @@ public class Grille {
                 if(verif ==4){
                     x =  true;
                 }
+                verif = 0;
             }
         } 
-        /*verification de droite à gauche*/
+        /*verification de haut en bas*/
         int verif2 =0;/*variable intermediaire */
         for(int c=0; c<=6; c++ ){  
             for (int l=0; l<=2; l++){
@@ -194,20 +195,22 @@ public class Grille {
                 if(verif2 ==4){
                     x =  true;
                 }
+                verif = 0;
             }
         }
         /*verification de la diagonale montante*/
         int verif3 = 0; /*variable intermediaire */
         for(int c=0; c<=3; c++ ){  
-            for (int l=0; l<=5; l++){
+            for (int l=0; l<=2; l++){
                 for(int k=0; k<4; k++){
-                    if(CellulesJeu[l][c+k].lireCouleurDuJeton()==coul){
+                    if(CellulesJeu[l+k][c+k].lireCouleurDuJeton()==coul){
                         verif3 +=1; // si la case suivante est de la meme couleur verif est iteré
                     }   
                 }
-                if(verif ==4){
+                if(verif3 ==4){
                     x =  true;
                 }
+                verif = 0;
             }
         } 
     return x;
