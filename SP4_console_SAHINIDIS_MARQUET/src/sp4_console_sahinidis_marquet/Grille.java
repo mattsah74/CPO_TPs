@@ -101,14 +101,14 @@ public class Grille {
     public void afficherGrilleSurConsole(){
         for (int i=0; i<6;i++){  
             for (int j=0; j<7; j++){
-                if (CellulesJeu[i][j].jetonCourant==null){
-                    System.out.print("o");
+                if (CellulesJeu[5-i][j].jetonCourant==null){
+                    System.out.print("o ");
                 }
-                else if (CellulesJeu[i][j].jetonCourant.Couleur == "jaune"){
-                    System.out.print("J");
+                else if (CellulesJeu[5-i][j].jetonCourant.Couleur == "jaune"){
+                    System.out.print("J ");
                 }
-                else if (CellulesJeu[i][j].jetonCourant.Couleur== "rouge"){
-                    System.out.print("R");
+                else if (CellulesJeu[5-i][j].jetonCourant.Couleur== "rouge"){
+                    System.out.print("R ");
                 }   
             }
             System.out.println("");  // saute une ligne quand la ligne est finie d'afficher
@@ -174,7 +174,7 @@ public class Grille {
             for (int l=0; l<=5; l++){
                 for(int k=0; k<4; k++){
                     if(CellulesJeu[l][c+k].lireCouleurDuJeton()==coul){
-                        verif +=1;
+                        verif +=1; // si la case suivante est de la meme couleur verif est iteré
                     }   
                 }
                 if(verif ==4){
@@ -196,6 +196,20 @@ public class Grille {
                 }
             }
         }
+        /*verification de la diagonale montante*/
+        int verif3 = 0; /*variable intermediaire */
+        for(int c=0; c<=3; c++ ){  
+            for (int l=0; l<=5; l++){
+                for(int k=0; k<4; k++){
+                    if(CellulesJeu[l][c+k].lireCouleurDuJeton()==coul){
+                        verif3 +=1; // si la case suivante est de la meme couleur verif est iteré
+                    }   
+                }
+                if(verif ==4){
+                    x =  true;
+                }
+            }
+        } 
     return x;
     }
     
