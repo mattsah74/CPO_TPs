@@ -42,7 +42,7 @@ public class Cellule {
 //    public Jeton recupereJeton(){
 //        return jetonCourant;
 //    }
-    
+                
 //    public boolean supprimerJeton (Jeton id){
 //        if (jetonCourant==id){
 //            jetonCourant=null;
