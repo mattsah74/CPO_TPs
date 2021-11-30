@@ -7,34 +7,44 @@ import java.util.Random;
 
 /**
  *
- * @author matth
+ * @author louis & matthieu
  */
 public class Joueur {
-    Jeton [] tab = new Jeton [21];
-    String nom;
-    String couleur;
-    int ListeJetons;
-    int nombreJetonsRestants;
-    int nombreDesintegrateurs;
-    public Joueur(String lenom, String couleur1, int listejet, int nbjetrest){
-        nom = lenom;
-        couleur = couleur1; 
-        ListeJetons = listejet;
-        nombreJetonsRestants = nbjetrest;
-//        nombreDesintegrateurs = nbdesint;
-    }
-    public void affecterCouleur(String couleur1){
-        couleur = couleur1;
-    }
-    public boolean ajouterJeton(Jeton jetonCourant){
-        for(int i=0; i<tab.length;i++){
-            if (tab[i]==null){
-                tab[i]=jetonCourant;
-                nombreJetonsRestants+=1;
-                return true;
-            }
-        }
-        return false;
-    }   
     
+    String Nom;
+    String Couleur;
+    Jeton ListeJetons[] = new Jeton [21];
+    int nombreDesintegrateurs;
+    int nombreJetonsRestant;
+    
+    Joueur(String nom_joueur){
+        Nom = nom_joueur;
+        nombreDesintegrateurs = 0;
+        nombreJetonsRestant = 0;
+    } 
+    
+    void affecterCouleur(String coul){
+        Couleur = coul;
+    }
+    
+    void ajouterJeton(Jeton un_jeton){
+        ListeJetons[nombreJetonsRestant++] = un_jeton;
+    }
+    
+    Jeton retirerJeton(){
+        nombreJetonsRestant = nombreJetonsRestant-1;
+        return ListeJetons[nombreJetonsRestant];
+    }
+    
+    void obtenirDesintegrateur(){
+        nombreDesintegrateurs += 1;
+    }
+    
+    boolean utiliserDesintegrateur(){
+        if(nombreDesintegrateurs==0){
+            return false;
+        }
+        nombreDesintegrateurs--;
+        return true;
+    }
 }

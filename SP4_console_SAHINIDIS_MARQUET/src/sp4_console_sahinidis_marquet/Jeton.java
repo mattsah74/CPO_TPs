@@ -6,22 +6,25 @@ package sp4_console_sahinidis_marquet;
 
 /**
  *
- * @author matth 
+ * @author louis & matthieu
  */
 public class Jeton {
     String Couleur;
-    public Jeton(String CouleurJeton){
-        Couleur=CouleurJeton;
+    
+    Jeton(String coul){
+        Couleur = coul;
     }
-    public String lireCouleur(){
+    
+    // ajout d'un commentaire
+    String lireCouleur(){
         return Couleur;
     }
-    public String couleurDuJetonVue(){
-        if ("Jaune".equals(Couleur)){
-            return"\u001B[33m O";
-        }
-        return"\u001B[31m O";
+    
+    // notez le vert
+    @Override
+    public String toString(){
+        if("Rouge".equals(Couleur))
+            return "\u001B[31m O ";
+        return "\u001B[33m O ";
     }
-
 }
-
