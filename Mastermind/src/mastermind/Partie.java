@@ -4,7 +4,7 @@
  */
 package mastermind;
 
-/**
+/** 
  *
  * @author matth
  */
@@ -12,6 +12,5 @@ public class Partie {
     Grille grillejeu[][] = new Grille[12][4];
     
     void initialiserpartie(){
-        grillejeu
     }
 }
