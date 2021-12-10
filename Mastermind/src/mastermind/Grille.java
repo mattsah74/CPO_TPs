@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mastermind;
+import java.util.ArrayList;
 import java.util.Random;
+
 
 /**
  *
@@ -49,13 +51,12 @@ public class Grille {
         int nbrouge =0; //nombre de rouge total
         int nbblanc=0;  // nombre de blanc final
         int nbblanctot = 0; //nombre de blanc total (en comptant les rouges)
-        for(int i=0; i<4; i++){
-            if(grille[l][i].Couleur == combi[i]){
-                nbrouge +=1;
-            }
-        }
         
+        
+        return nbrouge;
     }
+        
+     
     
     
     
