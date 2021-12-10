@@ -16,6 +16,7 @@ public class Mastermind {
     public static void main(String[] args) {
         Grille gri = new Grille();
         gri.creercombinaison();
+        gri.affichercombinaison();
     }
     
 }
