@@ -8,6 +8,8 @@ package mastermind;
  *
  * @author matth
  */
+
+
 public class Mastermind {
 
     /**
