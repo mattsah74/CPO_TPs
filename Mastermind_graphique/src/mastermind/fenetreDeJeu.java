@@ -9,12 +9,20 @@ package mastermind;
  * @author matth
  */
 public class fenetreDeJeu extends javax.swing.JFrame {
-
+    Grille grillejeu = new Grille();
     /**
      * Creates new form fenetreDeJeu
      */
     public fenetreDeJeu() {
         initComponents();
+        pan_couleur.setVisible(false);
+
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 4; j++) {
+                Boulegraphique boulegraph = new Boulegraphique(grillejeu.grille[i][j]);
+                pan_grillejeu.add(boulegraph);
+            }
+        }
     }
 
     /**
@@ -26,35 +34,126 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pan_grille = new javax.swing.JPanel();
-        pan_infojoueur = new javax.swing.JPanel();
-        pan_partie = new javax.swing.JPanel();
-        pan_jeton = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        pan_indice = new javax.swing.JPanel();
+        pan_infojeu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        nomjoueur = new javax.swing.JTextField();
+        btn_start = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        pan_couleur = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        numcas = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        pan_grillejeu = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pan_grille.setBackground(new java.awt.Color(204, 102, 0));
-        pan_grille.setLayout(new java.awt.GridLayout(12, 4));
-        getContentPane().add(pan_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 384, 768));
+        pan_indice.setBackground(new java.awt.Color(204, 102, 0));
+        pan_indice.setLayout(new java.awt.GridLayout(12, 4));
+        getContentPane().add(pan_indice, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 150, 600));
 
-        pan_infojoueur.setBackground(new java.awt.Color(102, 255, 102));
-        pan_infojoueur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pan_infojoueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 280, 110));
+        pan_infojeu.setBackground(new java.awt.Color(0, 153, 204));
+        pan_infojeu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pan_partie.setBackground(new java.awt.Color(102, 255, 102));
-        pan_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pan_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 280, 130));
+        jLabel1.setText("MASTERMIND");
+        pan_infojeu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
-        pan_jeton.setBackground(new java.awt.Color(102, 255, 102));
-        pan_jeton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pan_jeton.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        nomjoueur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomjoueurActionPerformed(evt);
+            }
+        });
+        pan_infojeu.add(nomjoueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 100, -1));
 
-        getContentPane().add(pan_jeton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 280, 130));
+        btn_start.setText("START");
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
+        pan_infojeu.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
-        setBounds(0, 0, 1034, 842);
+        jLabel2.setText("Nom du Joueur : ");
+        pan_infojeu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        getContentPane().add(pan_infojeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 280, 130));
+
+        pan_couleur.setBackground(new java.awt.Color(0, 153, 204));
+        pan_couleur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setText("Choisissez la couleur pour la case numéro :");
+        pan_couleur.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+        pan_couleur.add(numcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, 280, 130));
+
+        jButton2.setText("4");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 620, -1, -1));
+
+        jButton3.setText("1");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, -1, -1));
+
+        jButton4.setText("2");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, -1, -1));
+
+        jButton5.setText("3");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, -1, -1));
+
+        pan_grillejeu.setBackground(new java.awt.Color(204, 102, 0));
+        pan_grillejeu.setLayout(new java.awt.GridLayout(12, 4));
+        getContentPane().add(pan_grillejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 400, 600));
+
+        setBounds(0, 0, 1034, 681);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        pan_couleur.setVisible(true);
+    }//GEN-LAST:event_btn_startActionPerformed
+
+    private void nomjoueurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomjoueurActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,10 +191,20 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_start;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel pan_grille;
-    private javax.swing.JPanel pan_infojoueur;
-    private javax.swing.JPanel pan_jeton;
-    private javax.swing.JPanel pan_partie;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nomjoueur;
+    private javax.swing.JLabel numcas;
+    private javax.swing.JPanel pan_couleur;
+    private javax.swing.JPanel pan_grillejeu;
+    private javax.swing.JPanel pan_indice;
+    private javax.swing.JPanel pan_infojeu;
     // End of variables declaration//GEN-END:variables
 }
