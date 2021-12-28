@@ -21,6 +21,7 @@ public class Boulegraphique extends JButton {
     ImageIcon img_jaune = new javax.swing.ImageIcon(getClass().getResource("/images/car_jaune.png"));
     ImageIcon img_indrouge = new javax.swing.ImageIcon(getClass().getResource("/images/carind_rouge.png"));
     ImageIcon img_indblanc = new javax.swing.ImageIcon(getClass().getResource("/images/carind_blanc.png"));
+    ImageIcon img_indvide = new javax.swing.ImageIcon(getClass().getResource("/images/carind_vide.png"));
     
     public Boulegraphique (Boule uneboule){
         bouleassoc = uneboule;

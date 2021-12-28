@@ -27,6 +27,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             for (int j = 0; j < 4; j++) {
                 Boulegraphique boulegraph = new Boulegraphique(grillejeu.grille[i][j]);
                 pan_grillejeu.add(boulegraph);
+                pan_indice.add(boulegraph);
             }
         }
         
