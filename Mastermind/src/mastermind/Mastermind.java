@@ -16,9 +16,14 @@ public class Mastermind {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Grille gri = new Grille();
-        gri.creercombinaison();
-        gri.affichercombinaison();
+        
+        Partie partie = new Partie();
+     
+        partie.initialiserpartie();
+        partie.debuterpartie();
+   
+    
     }
+
     
 }
