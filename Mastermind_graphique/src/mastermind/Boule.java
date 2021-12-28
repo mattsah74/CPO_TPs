@@ -10,13 +10,15 @@ package mastermind;
  */
 public class Boule {
     String Couleur;
+    Boule grille1 [][] = new Boule[12][4];
+    
     
     public Boule(String coul){
         Couleur = coul;
     }
     
     // ajout d'un commentaire
-    public String lireCouleur(){
+    public String lireCouleurBoule(){
         return Couleur;
     }
 }

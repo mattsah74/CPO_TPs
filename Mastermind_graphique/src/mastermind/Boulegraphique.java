@@ -14,7 +14,13 @@ import javax.swing.JButton;
  */
 public class Boulegraphique extends JButton {
     Boule bouleassoc;
-    ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/images/car_blanc.png"));
+    ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/images/car_vide.png"));
+    ImageIcon img_bleu = new javax.swing.ImageIcon(getClass().getResource("/images/car_bleu.png"));
+    ImageIcon img_rouge = new javax.swing.ImageIcon(getClass().getResource("/images/car_rouge.png"));
+    ImageIcon img_vert = new javax.swing.ImageIcon(getClass().getResource("/images/car_vert.png"));
+    ImageIcon img_jaune = new javax.swing.ImageIcon(getClass().getResource("/images/car_jaune.png"));
+    ImageIcon img_indrouge = new javax.swing.ImageIcon(getClass().getResource("/images/carind_rouge.png"));
+    ImageIcon img_indblanc = new javax.swing.ImageIcon(getClass().getResource("/images/carind_blanc.png"));
     
     public Boulegraphique (Boule uneboule){
         bouleassoc = uneboule;
@@ -23,6 +29,22 @@ public class Boulegraphique extends JButton {
     @Override
     public void paintComponent (Graphics G) {
         super.paintComponent(G);
-        setIcon(img_vide); // On attribue l'image de base de la grille
+        if(bouleassoc == null){
+            setIcon(img_vide);
+        }
+        else{
+            if(bouleassoc.Couleur == "rouge"){
+                setIcon(img_rouge);
+            }
+            else if(bouleassoc.Couleur == "jaune"){
+                setIcon(img_jaune);
+            }        
+            else if(bouleassoc.Couleur == "vert"){
+                setIcon(img_vert);
+            }
+            else if(bouleassoc.Couleur == "bleu"){
+                setIcon(img_bleu);
+            }
+        }
     }
 }

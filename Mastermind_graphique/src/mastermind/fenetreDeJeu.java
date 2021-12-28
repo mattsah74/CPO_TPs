@@ -4,25 +4,32 @@
  */
 package mastermind;
 
+import java.util.Scanner;
+
 /**
  *
  * @author matth
  */
 public class fenetreDeJeu extends javax.swing.JFrame {
+    int mode =0;
     Grille grillejeu = new Grille();
     /**
      * Creates new form fenetreDeJeu
      */
     public fenetreDeJeu() {
         initComponents();
+        pan_message.setVisible(false);
+        pan_grillejeu.setVisible(false);
+        pan_indice.setVisible(false);
+        pan_message.setVisible(false);
         pan_couleur.setVisible(false);
-
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 4; j++) {
                 Boulegraphique boulegraph = new Boulegraphique(grillejeu.grille[i][j]);
                 pan_grillejeu.add(boulegraph);
             }
         }
+        
     }
 
     /**
@@ -39,23 +46,28 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         pan_infojeu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nomjoueur = new javax.swing.JTextField();
-        btn_start = new javax.swing.JButton();
+        btn_startfacile = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        pan_couleur = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        numcas = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_startmoyen = new javax.swing.JButton();
+        btn_startdur = new javax.swing.JButton();
+        pan_message = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        message = new javax.swing.JTextArea();
+        btn4 = new javax.swing.JButton();
+        btn1 = new javax.swing.JButton();
+        btn2 = new javax.swing.JButton();
+        btn3 = new javax.swing.JButton();
         pan_grillejeu = new javax.swing.JPanel();
+        pan_couleur = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        numcase = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pan_indice.setBackground(new java.awt.Color(204, 102, 0));
         pan_indice.setLayout(new java.awt.GridLayout(12, 4));
-        getContentPane().add(pan_indice, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 150, 600));
+        getContentPane().add(pan_indice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 600));
 
         pan_infojeu.setBackground(new java.awt.Color(0, 153, 204));
         pan_infojeu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,90 +82,137 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
         pan_infojeu.add(nomjoueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 100, -1));
 
-        btn_start.setText("START");
-        btn_start.addActionListener(new java.awt.event.ActionListener() {
+        btn_startfacile.setText("Facile");
+        btn_startfacile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_startActionPerformed(evt);
+                btn_startfacileActionPerformed(evt);
             }
         });
-        pan_infojeu.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+        pan_infojeu.add(btn_startfacile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel2.setText("Nom du Joueur : ");
         pan_infojeu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
+        btn_startmoyen.setText("Moyen");
+        btn_startmoyen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startmoyenActionPerformed(evt);
+            }
+        });
+        pan_infojeu.add(btn_startmoyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+
+        btn_startdur.setText("Difficile");
+        btn_startdur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startdurActionPerformed(evt);
+            }
+        });
+        pan_infojeu.add(btn_startdur, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+
         getContentPane().add(pan_infojeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 280, 130));
 
-        pan_couleur.setBackground(new java.awt.Color(0, 153, 204));
-        pan_couleur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pan_message.setBackground(new java.awt.Color(0, 153, 204));
+        pan_message.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setText("Choisissez la couleur pour la case numéro :");
-        pan_couleur.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
-        pan_couleur.add(numcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+        message.setColumns(20);
+        message.setRows(5);
+        jScrollPane1.setViewportView(message);
 
-        getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, 280, 130));
+        pan_message.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 110));
 
-        jButton2.setText("4");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(pan_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 250, 280, 130));
+
+        btn4.setText("4");
+        btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 620, -1, -1));
+        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 620, -1, -1));
 
-        jButton3.setText("1");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn1.setText("1");
+        btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, -1, -1));
+        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, -1, -1));
 
-        jButton4.setText("2");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn2.setText("2");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, -1, -1));
+        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, -1, -1));
 
-        jButton5.setText("3");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn3.setText("3");
+        btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, -1, -1));
+        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, -1, -1));
 
         pan_grillejeu.setBackground(new java.awt.Color(204, 102, 0));
         pan_grillejeu.setLayout(new java.awt.GridLayout(12, 4));
         getContentPane().add(pan_grillejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 400, 600));
 
+        pan_couleur.setBackground(new java.awt.Color(0, 153, 204));
+        pan_couleur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("Choisissez la couleur pour la ");
+        pan_couleur.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+        pan_couleur.add(numcase, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 110, 20));
+
+        getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 280, 130));
+
         setBounds(0, 0, 1034, 681);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
-        pan_couleur.setVisible(true);
-    }//GEN-LAST:event_btn_startActionPerformed
+    private void btn_startfacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startfacileActionPerformed
+
+        
+    }//GEN-LAST:event_btn_startfacileActionPerformed
 
     private void nomjoueurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomjoueurActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
+        numcase.setText("4ème colonne");
+        jouerdanscolonne(3);
+    }//GEN-LAST:event_btn4ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
+        numcase.setText("1ère colonne");
+        jouerdanscolonne(0);
+        
+    }//GEN-LAST:event_btn1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        numcase.setText("2ème colonne");
+        jouerdanscolonne(1);
+    }//GEN-LAST:event_btn2ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
+        numcase.setText("3ème colonne");
+        jouerdanscolonne(2);
+    }//GEN-LAST:event_btn3ActionPerformed
+    
+    private void btn_startmoyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startmoyenActionPerformed
+        pan_message.setVisible(true);
+        pan_grillejeu.setVisible(true);
+        pan_indice.setVisible(true);
+        pan_infojeu.setVisible(true);
+        pan_couleur.setVisible(true);
+        //initialiserpartie();
+        
+    }//GEN-LAST:event_btn_startmoyenActionPerformed
+
+    private void btn_startdurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startdurActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btn_startdurActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,22 +248,68 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             }
         });
     }
+    void initialiserpartie() {
+        grillejeu = new Grille();
+        int bon = 0;
+        int modetemporaire = 0;
+        System.out.println("___________________MASTERMIND by Matthieu and Anthony___________________");
+        System.out.println("Bonjour !\nBienvenue sur le Mastermind imaginé par Matthieu et Anthony");
+        String prenom = nomjoueur.getText();
+        System.out.println("A vous de jouer " + prenom + " !");
+        System.out.println("Il existe 3 modes de jeu :\n1- Le mode 'Simple' (Aligne les 3 couleurs dans l'ordre imaginé par l'ordinateur en moins de 12 essais, tu as le choix entre 4 couleurs différentes)\n2- Le mode 'Normal' (Aligne 4 couleurs en moins de 12 essais, tu as le choix entre 4 couleurs différentes)\n3- Le mode 'Extrême' (Aligne 5 couleurs en moins de 15 essis,tu as le choix entre 6 couleurs différentes)");
+        while (bon != 1) {
+            System.out.println("\nVeuillez saisir un mode de jeu (1, 2, ou 3) :");
+//            modetemporaire = sc.nextInt();
+            // System.out.println(modetemporaire);
+            if (modetemporaire == 1 || modetemporaire == 2 || modetemporaire == 3) {
+                if (modetemporaire == 1) {
+                    mode = 1;
+                } else if (modetemporaire == 2) {
+                    mode = 2;
+                } else if (modetemporaire == 3) {
+                    mode = 3;
+                }
+                // System.out.println(mode);
+                bon = 1;
+            } else {
+                System.out.println("Je n'ai pas compris...");
+                System.out.println(" ");
+                continue;
+            }
 
+        }
+
+    }
+    
+    public boolean jouerdanscolonne(int c){
+        
+        
+        return true;
+    }
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_start;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btn1;
+    private javax.swing.JButton btn2;
+    private javax.swing.JButton btn3;
+    private javax.swing.JButton btn4;
+    private javax.swing.JButton btn_startdur;
+    private javax.swing.JButton btn_startfacile;
+    private javax.swing.JButton btn_startmoyen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea message;
     private javax.swing.JTextField nomjoueur;
-    private javax.swing.JLabel numcas;
+    private javax.swing.JLabel numcase;
     private javax.swing.JPanel pan_couleur;
     private javax.swing.JPanel pan_grillejeu;
     private javax.swing.JPanel pan_indice;
     private javax.swing.JPanel pan_infojeu;
+    private javax.swing.JPanel pan_message;
     // End of variables declaration//GEN-END:variables
 }
