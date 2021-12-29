@@ -5,6 +5,7 @@
 package mastermind;
 
 import java.io.PrintWriter;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -304,15 +305,18 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
     private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
         validation = true;
-        int[] nbB_nbR= verifiercombi(numligne,mode);
-        
+        int[] indice= verifiercombi(numligne,mode);
+        int nbR = indice[0];
+        int nbB = indice[1];
+        String nbRstring = String.valueOf(nbR);
+        String nbBstring = String.valueOf(nbB);
+        message.setText("rouge: "+nbRstring+" blanc: "+nbBstring);
         numligne +=1;
     }//GEN-LAST:event_btn_validerActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         numcase.setText("1ère colonne");
         numcolonne = 0;
-
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
@@ -341,6 +345,13 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         btn_marron.setEnabled(false);
         mode = 2;
         grillejeu = new Grille(mode);
+        creercombinaison(mode);
+        String a = String.valueOf(combi2[0]);
+        String b = String.valueOf(combi2[1]);
+        String c = String.valueOf(combi2[2]);
+        String d = String.valueOf(combi2[3]);
+        message.setText(a+b+c+d);
+        
         
     }//GEN-LAST:event_btn_startmoyenActionPerformed
 
@@ -367,53 +378,42 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_bleu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bleu1ActionPerformed
         Boule bouleselec = new Boule("bleu");
         jouerdanscolonne("bleu", numligne, numcolonne, mode);
-        String a = grillemode2[numligne][0].Couleur;
-        String b = grillemode2[numligne][1].Couleur;
-        String c = grillemode2[numligne][2].Couleur;
-        String d = grillemode2[numligne][3].Couleur;
-        message.setText(a+b+c+d);
         pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_bleu1ActionPerformed
 
     private void btn_rougeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rougeActionPerformed
         Boule bouleselec = new Boule("rouge");
         jouerdanscolonne("rouge", numligne, numcolonne, mode);
-        String a = grillemode2[numligne][0].Couleur;
-        String b = grillemode2[numligne][1].Couleur;
-        String c = grillemode2[numligne][2].Couleur;
-        String d = grillemode2[numligne][3].Couleur;
-        message.setText(a+b+c+d);
         pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_rougeActionPerformed
 
     private void btn_vertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vertActionPerformed
         Boule bouleselec = new Boule("vert");
         jouerdanscolonne("vert", numligne, numcolonne, mode);
-        String a = grillemode2[numligne][0].Couleur;
-        String b = grillemode2[numligne][1].Couleur;
-        String c = grillemode2[numligne][2].Couleur;
-        String d = grillemode2[numligne][3].Couleur;
-        message.setText(a+b+c+d);
         pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_vertActionPerformed
 
     private void btn_jauneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jauneActionPerformed
         Boule bouleselec = new Boule("jaune");
         jouerdanscolonne("jaune", numligne, numcolonne, mode);
-        String a = grillemode2[numligne][0].Couleur;
-        String b = grillemode2[numligne][1].Couleur;
-        String c = grillemode2[numligne][2].Couleur;
-        String d = grillemode2[numligne][3].Couleur;
-        message.setText(a+b+c+d);
+//        String a = grillemode2[numligne][0].Couleur;
+//        String b = grillemode2[numligne][1].Couleur;
+//        String c = grillemode2[numligne][2].Couleur;
+//        String d = grillemode2[numligne][3].Couleur;
+//        message.setText(a+b+c+d);
         pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_jauneActionPerformed
 
     private void btn_orangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orangeActionPerformed
-        bouleselec.Couleur = "orange";
+        Boule bouleselec = new Boule("orange");
+        jouerdanscolonne("orange", numligne, numcolonne, mode);
+        pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_orangeActionPerformed
 
     private void btn_marronActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_marronActionPerformed
-        bouleselec.Couleur = "marron";
+        Boule bouleselec = new Boule("marron");
+        jouerdanscolonne("marron", numligne, numcolonne, mode);
+        pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_marronActionPerformed
 
     /**
@@ -671,6 +671,27 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         int[] valeursRB = {nbR, nbB}; // Comme je ne peux pas retourner deux int, je retourne un tableau contenant mes deux valeurs avec le nombre de rouge en premier.
 
         return valeursRB;
+    }
+    
+    public void creercombinaison(int mode) { // permet de creer la combinaison aléatoire a trouver 
+        Random nb = new Random();
+        if (mode == 1) {
+            for (int i = 0; i < 3; i++) {
+                int alea = nb.nextInt(3);
+                combi1[i] = listecoul12[alea];
+            }
+        } else if (mode == 2) {
+            for (int i = 0; i < 4; i++) {
+                int alea = nb.nextInt(4);
+                combi2[i] = listecoul12[alea];
+            }
+        } else if (mode == 3) {
+            for (int i = 0; i < 5; i++) {
+                int alea = nb.nextInt(5);
+                combi3[i] = listecoul3[alea];
+            }
+        }
+
     }
 
 
