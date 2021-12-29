@@ -19,6 +19,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     Boule grillemode1[][] = new Boule[12][3]; // initialise notre grille du mode 1
     Boule grillemode2[][] = new Boule[12][4]; // initialise notre grille du mode 2
     Boule grillemode3[][] = new Boule[15][5]; // initialise notre grille du mode 3
+    Boule grilleindice2[][] = new Boule[12][4]; //initialise grille indice du mode 2
     String combi1[] = new String[3]; // initialise une ligne pour la combinaison mode 1
     String combi2[] = new String[4]; // initialise une ligne pour la combinaison mode 2
     String combi3[] = new String[5]; // initialise une ligne pour la combinaison mode 3
@@ -55,7 +56,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         }
         for (int i = 0; i < 12; i++) { // cree le tableau indice
             for (int j = 0; j < 4; j++) {
-                Boulegraphique boulegraph = new Boulegraphique(grillemode2[i][j]);
+                Boule b2 = new Boule("temp"); //initialise avec des boules de base 
+                grilleindice2[i][j] = b2;
+                Boulegraphique boulegraph = new Boulegraphique(grilleindice2[i][j]);
                 pan_indice.add(boulegraph);
             }
         }
@@ -301,6 +304,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
     private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
         validation = true;
+        int[] nbB_nbR= verifiercombi(numligne,mode);
+        
         numligne +=1;
     }//GEN-LAST:event_btn_validerActionPerformed
 
@@ -335,7 +340,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         btn_orange.setEnabled(false);
         btn_marron.setEnabled(false);
         mode = 2;
-        
         grillejeu = new Grille(mode);
         
     }//GEN-LAST:event_btn_startmoyenActionPerformed
@@ -561,6 +565,112 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             }
 
         }
+    }
+    
+    public void majgrilleindice(int tab[]){
+        int nbR = tab[0];
+        int nbB = tab[1];
+        for(int i=0; i<4;i++){
+            
+        }
+    }
+    
+    public int[] verifiercombi(int l, int mode) {
+        int nbR = 0; // nombre rouge final
+        int nbB = 0;  // nombre blanc final
+
+        // On crée un tableau qui va nous permettre de vérifier les pions bien placés puis ceux mal placés mais bien présents
+        boolean Check[] = new boolean[mode + 2];
+
+        if (mode == 1) {
+            for (int i = 0; i < 3; i++) {
+                if (grillemode1[l][i].Couleur == combi1[i]) {
+                    nbR += 1;
+                    Check[i] = true;
+                }
+            }
+
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    if (grillemode1[l][j].Couleur != combi1[j] && Check[k] == false && grillemode1[l][k].Couleur == combi1[j]) {
+                        nbB += 1;
+                        Check[k] = true;
+                        break;
+                    }
+
+                }
+
+            }
+
+            for (int n = 0; n < 2; n++) {
+                if (n == 0) {
+                    aide12[l][n] = nbR;
+                } else {
+                    aide12[l][n] = nbB;
+                }
+            }
+
+        } else if (mode == 2) {
+            for (int i = 0; i < 4; i++) {
+                if (grillemode2[l][i].Couleur == combi2[i]) {
+                    nbR += 1;
+                    Check[i] = true;
+                }
+            }
+
+            for (int j = 0; j < 4; j++) {
+                for (int k = 0; k < 4; k++) {
+                    if (grillemode2[l][j].Couleur != combi2[j] && Check[k] == false && grillemode2[l][k].Couleur == combi2[j]) {
+                        nbB += 1;
+                        Check[k] = true;
+                        break;
+                    }
+
+                }
+
+            }
+
+            for (int n = 0; n < 2; n++) {
+                if (n == 0) {
+                    aide12[l][n] = nbR;
+                } else {
+                    aide12[l][n] = nbB;
+                }
+            }
+
+        } else if (mode == 3) {
+            for (int i = 0; i < 5; i++) {
+                if (grillemode3[l][i].Couleur == combi3[i]) {
+                    nbR += 1;
+                    Check[i] = true;
+                }
+            }
+
+            for (int j = 0; j < 5; j++) {
+                for (int k = 0; k < 5; k++) {
+                    if (grillemode3[l][j].Couleur != combi3[j] && Check[k] == false && grillemode3[l][k].Couleur == combi3[j]) {
+                        nbB += 1;
+                        Check[k] = true;
+                        break;
+                    }
+
+                }
+
+            }
+
+            for (int n = 0; n < 2; n++) {
+                if (n == 0) {
+                    aide3[l][n] = nbR;
+                } else {
+                    aide3[l][n] = nbB;
+                }
+            }
+
+        }
+
+        int[] valeursRB = {nbR, nbB}; // Comme je ne peux pas retourner deux int, je retourne un tableau contenant mes deux valeurs avec le nombre de rouge en premier.
+
+        return valeursRB;
     }
 
 
