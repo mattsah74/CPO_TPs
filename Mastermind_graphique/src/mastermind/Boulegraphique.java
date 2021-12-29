@@ -46,6 +46,9 @@ public class Boulegraphique extends JButton {
             else if(bouleassoc.Couleur == "bleu"){
                 setIcon(img_bleu);
             }
+            else if(bouleassoc.Couleur == "null"){
+                setIcon(img_vide);
+            }
         }
     }
 }

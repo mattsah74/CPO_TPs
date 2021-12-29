@@ -66,8 +66,8 @@ public class Partie {
         Scanner scan = new Scanner(System.in);
         int nbtour = 0; // comptabilise le nombre de tours avant victoire pour enregistrer le score
 
-        int nbcolonne = 0;// nbcolonne sera le nombre de colonnes associées à la grille de jeu correspondsante au mode choisi par l'utilisateur
-        int nbligne = 0; // pareil que nbcolonne mais correspondant au nombre de tours total
+        int nbcolonne;// nbcolonne sera le nombre de colonnes associées à la grille de jeu correspondsante au mode choisi par l'utilisateur
+        int nbligne; // pareil que nbcolonne mais correspondant au nombre de tours total
         if (mode == 1) {
             nbcolonne = 3;
             nbligne = 12;

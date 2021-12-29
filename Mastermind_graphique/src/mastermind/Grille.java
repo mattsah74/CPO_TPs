@@ -23,8 +23,10 @@ public class Grille {
     String listecoul3[] = {"jaune", "rouge", "bleu", "vert", "orange", "marron"}; //couleurs mode 3
     int aide12[][] = new int[12][2]; // grille qui nous donnera le nombre de jetons correctement^placée et le nombre de jetons de la bonne couleur présents
     int aide3[][] = new int[15][2];
+    Boule[][] grille;
 
     public Grille(int mode) { // constructeur qui remplit la grille avec des boules null = cases vides
+        Boule temp = new Boule("null");
         if (mode == 1) {
             for (int i = 0; i < 12; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -34,7 +36,7 @@ public class Grille {
         } else if (mode == 2) {
             for (int i = 0; i < 12; i++) {
                 for (int j = 0; j < 4; j++) {
-                    grillemode2[i][j] = null;
+                    grillemode2[i][j] = temp;
                 }
             }
         } else if (mode == 3) {
