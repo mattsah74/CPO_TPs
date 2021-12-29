@@ -4,6 +4,7 @@
  */
 package mastermind;
 
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Scanner;
  * @author matth
  */
 public class fenetreDeJeu extends javax.swing.JFrame {
-    
+
     Grille grillejeu = new Grille(2);
     String nomjoueur;
     int mode;
@@ -27,17 +28,17 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     int aide3[][] = new int[15][2];
     Boule[][] grille;
     Boule bouleselec;
-    boolean validation= false;
-    
+    int numcolonne = 0;
+    boolean validation = false;
+    int numligne = 0;
+
     /**
      * Creates new form fenetreDeJeu
      */
     public fenetreDeJeu() {
         initComponents();
-        pan_message.setVisible(false);
         pan_grillejeu.setVisible(false);
         pan_indice.setVisible(false);
-        pan_message.setVisible(false);
         pan_couleur.setVisible(false);
         btn1.setVisible(false);
         btn2.setVisible(false);
@@ -45,19 +46,22 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         btn4.setVisible(false);
         for (int i = 0; i < 12; i++) { // cree le tableau de jeu 
             for (int j = 0; j < 4; j++) {
-                Boulegraphique boulegraph = new Boulegraphique(grillejeu.grillemode2[i][j]); //grillegrille[i][j]
+                Boule b2 = new Boule("temp"); //initialise avec des boules de base 
+                grillemode2[i][j] = b2;
+                Boulegraphique boulegraph = new Boulegraphique(grillemode2[i][j]); 
                 pan_grillejeu.add(boulegraph);
-                
+
             }
         }
         for (int i = 0; i < 12; i++) { // cree le tableau indice
             for (int j = 0; j < 4; j++) {
-                Boulegraphique boulegraph = new Boulegraphique(grillejeu.grillemode2[i][j]);
+                Boulegraphique boulegraph = new Boulegraphique(grillemode2[i][j]);
                 pan_indice.add(boulegraph);
-                
             }
         }
-        
+        message.setText("Bienvenue au Mastermind ! \n Selectionnez la difficulté de jeu:");
+        message.setText("Bienvenue au Mastermind ! \nIl existe 3 modes de jeu :\n1. Simple (Aligne 3 couleurs en moins de 12 essais tu as le choix entre 4 couleurs différentes)\n2. Normal (Aligne 4 couleurs en moins de 12 essais, tu as le choix entre 4 couleurs différentes)\n3. Extrême (Aligne 5 couleurs en moins de 15 essis,tu as le choix entre 6 couleurs différentes)");
+       
     }
 
     /**
@@ -84,6 +88,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         btn1 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
+        btn4 = new javax.swing.JButton();
         pan_grillejeu = new javax.swing.JPanel();
         pan_couleur = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -95,7 +100,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         btn_vert = new javax.swing.JButton();
         btn_jaune = new javax.swing.JButton();
         btn_orange = new javax.swing.JButton();
-        btn4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -181,6 +185,14 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
         getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 620, -1, -1));
 
+        btn4.setText("4");
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, -1, -1));
+
         pan_grillejeu.setBackground(new java.awt.Color(204, 102, 0));
         pan_grillejeu.setLayout(new java.awt.GridLayout(12, 4));
         getContentPane().add(pan_grillejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 400, 600));
@@ -263,14 +275,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
         getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 280, 180));
 
-        btn4.setText("4");
-        btn4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, -1, -1));
-
         setBounds(0, 0, 1034, 681);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -278,14 +282,17 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         pan_message.setVisible(true);
         pan_grillejeu.setVisible(true);
         pan_indice.setVisible(true);
-        pan_infojeu.setVisible(true);
         pan_couleur.setVisible(true);
         btn1.setVisible(true);
         btn2.setVisible(true);
         btn3.setVisible(true);
         btn4.setVisible(true);
+        btn_startfacile.setEnabled(false);
+        btn_startmoyen.setEnabled(false);
+        btn_startdur.setEnabled(false);
         mode = 1;
-        
+
+
     }//GEN-LAST:event_btn_startfacileActionPerformed
 
     private void nomjoueurgraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurgraphActionPerformed
@@ -294,36 +301,42 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
     private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
         validation = true;
+        numligne +=1;
     }//GEN-LAST:event_btn_validerActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         numcase.setText("1ère colonne");
-        jouerdanscolonne(0);
-        
+        numcolonne = 0;
+
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         numcase.setText("2ème colonne");
-        jouerdanscolonne(1);
+        numcolonne = 1;
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         numcase.setText("3ème colonne");
-        jouerdanscolonne(2);
+        numcolonne = 2;
     }//GEN-LAST:event_btn3ActionPerformed
-    
+
     private void btn_startmoyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startmoyenActionPerformed
         pan_message.setVisible(true);
         pan_grillejeu.setVisible(true);
         pan_indice.setVisible(true);
-        pan_infojeu.setVisible(true);
         pan_couleur.setVisible(true);
         btn1.setVisible(true);
         btn2.setVisible(true);
         btn3.setVisible(true);
         btn4.setVisible(true);
+        btn_startfacile.setEnabled(false);
+        btn_startmoyen.setEnabled(false);
+        btn_startdur.setEnabled(false);
+        btn_orange.setEnabled(false);
+        btn_marron.setEnabled(false);
         mode = 2;
-        //initialiserpartie();
+        
+        grillejeu = new Grille(mode);
         
     }//GEN-LAST:event_btn_startmoyenActionPerformed
 
@@ -331,34 +344,64 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         pan_message.setVisible(true);
         pan_grillejeu.setVisible(true);
         pan_indice.setVisible(true);
-        pan_infojeu.setVisible(true);
         pan_couleur.setVisible(true);
         btn1.setVisible(true);
         btn2.setVisible(true);
         btn3.setVisible(true);
         btn4.setVisible(true);
+        btn_startfacile.setEnabled(false);
+        btn_startmoyen.setEnabled(false);
+        btn_startdur.setEnabled(false);
         mode = 3;
     }//GEN-LAST:event_btn_startdurActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         numcase.setText("4ème colonne");
-        jouerdanscolonne(4);
+        numcolonne = 3;
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn_bleu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bleu1ActionPerformed
-        bouleselec.Couleur = "bleu";
+        Boule bouleselec = new Boule("bleu");
+        jouerdanscolonne("bleu", numligne, numcolonne, mode);
+        String a = grillemode2[numligne][0].Couleur;
+        String b = grillemode2[numligne][1].Couleur;
+        String c = grillemode2[numligne][2].Couleur;
+        String d = grillemode2[numligne][3].Couleur;
+        message.setText(a+b+c+d);
+        pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_bleu1ActionPerformed
 
     private void btn_rougeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rougeActionPerformed
-        bouleselec.Couleur = "rouge";
+        Boule bouleselec = new Boule("rouge");
+        jouerdanscolonne("rouge", numligne, numcolonne, mode);
+        String a = grillemode2[numligne][0].Couleur;
+        String b = grillemode2[numligne][1].Couleur;
+        String c = grillemode2[numligne][2].Couleur;
+        String d = grillemode2[numligne][3].Couleur;
+        message.setText(a+b+c+d);
+        pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_rougeActionPerformed
 
     private void btn_vertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vertActionPerformed
-        bouleselec.Couleur = "vert";
+        Boule bouleselec = new Boule("vert");
+        jouerdanscolonne("vert", numligne, numcolonne, mode);
+        String a = grillemode2[numligne][0].Couleur;
+        String b = grillemode2[numligne][1].Couleur;
+        String c = grillemode2[numligne][2].Couleur;
+        String d = grillemode2[numligne][3].Couleur;
+        message.setText(a+b+c+d);
+        pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_vertActionPerformed
 
     private void btn_jauneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jauneActionPerformed
-        bouleselec.Couleur = "jaune";
+        Boule bouleselec = new Boule("jaune");
+        jouerdanscolonne("jaune", numligne, numcolonne, mode);
+        String a = grillemode2[numligne][0].Couleur;
+        String b = grillemode2[numligne][1].Couleur;
+        String c = grillemode2[numligne][2].Couleur;
+        String d = grillemode2[numligne][3].Couleur;
+        message.setText(a+b+c+d);
+        pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_jauneActionPerformed
 
     private void btn_orangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orangeActionPerformed
@@ -403,7 +446,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             }
         });
     }
-    void initialiserpartie() {
+
+    public void initialiserpartie() {
         int bon = 0;
         int modetemporaire = 0;
         System.out.println("___________________MASTERMIND by Matthieu and Anthony___________________");
@@ -434,21 +478,92 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         }
 
     }
-    
-    public void jouerdanscolonne(Boule b1, int l, int c, int mode) {
+
+    public void jouerdanscolonne(String coul, int l, int c, int mode) {
         if (mode == 1) {
-            grillemode1[l][c] = b1;
+            grillemode1[l][c].Couleur = coul;
         } else if (mode == 2) {
-            grillemode2[l][c] = b1;
+            grillemode2[l][c].Couleur = coul;
         } else if (mode == 3) {
-            grillemode3[l][c] = b1;
+            grillemode3[l][c].Couleur = coul;
+        }
+        pan_grillejeu.repaint();
+    }
+
+    public void debuterpartie() {
+        int finpartie = 1; // Pour arrêter la partie finpartie = 2.
+        int valcouleur = 0;
+        String couleur;
+        int niemecouleur = 1;
+        int bon = 0;
+        int nbRB[] = new int[2];
+        int nbtour = 0; // comptabilise le nombre de tours avant victoire pour enregistrer le score
+        int nbcolonne;// nbcolonne sera le nombre de colonnes associées à la grille de jeu correspondsante au mode choisi par l'utilisateur
+        int nbligne; // pareil que nbcolonne mais correspondant au nombre de tours total
+        if (mode == 1) {
+            nbcolonne = 3;
+            nbligne = 12;
+        } else if (mode == 2) {
+            nbcolonne = 4;
+            nbligne = 12;
+        } else {
+            nbcolonne = 5;
+            nbligne = 15;
+        }
+        message.setText("L'ordinateur a générer sa combinaison \n Cliquez sur la colonne dont vous souhaitez modifier la couleur \n Puis Cliquez sur la couleur\n une fois les 4 colonnes remplies, validez");
+        grillejeu.creercombinaison(mode); // La liste de référence est créée
+        message.setText(combi2 + "");
+
+        while (finpartie != 2) {
+            if (mode == 2) {
+                for (int i = 0; i < 12; i++) {
+                    while (validation == false) { // Début des 12 boucles pour trouver la ligne de l'ordinateur.
+                        nbtour += 1;
+                        grillejeu.ajouterboule(bouleselec, numligne, numcolonne, mode);
+                        message.setText("Voyons ce qu'il en est :");// rajouter ajouter les indices
+                    }
+                    nbRB = grillejeu.verifiercombi(i, mode);
+                    // rajouter ajouter les indices
+                    if (nbRB[0] == 4) {
+                        message.setText("Vous avez gagné");
+                        finpartie = 2;
+                        break;
+                    } else if (i == 11 && nbRB[0] != 4) {
+                        message.setText("Vous avez perdu.");
+                        finpartie = 2;
+                        break;
+                    } else {
+                        message.setText("Vous y êtes presque, continuez !");
+                    }
+                }
+            } else if (mode == 3) {
+                for (int i = 0; i < 15; i++) { // Début des 12 boucles pour trouver la ligne de l'ordinateur.
+                    while (validation == false) { // Début des 12 boucles pour trouver la ligne de l'ordinateur.
+                        nbtour += 1;
+                        grillejeu.ajouterboule(bouleselec, numligne, numcolonne, mode);
+                        message.setText("Voyons ce qu'il en est :");// rajouter ajouter les indices
+                    }
+                    nbRB = grillejeu.verifiercombi(i, mode);
+                    // rajouter ajouter les indices
+                    if (nbRB[0] == 5) {
+                        System.out.println("Vous avez gagné");
+                        finpartie = 2;
+                        break;
+                    } else if (i == 14 && nbRB[0] != 5) {
+                        System.out.println("Vous avez perdu.");
+                        finpartie = 2;
+                        break;
+                    } else {
+                        System.out.println("Vous y êtes presque, continuez !");
+                    }
+
+                }
+            }
+
         }
     }
-    
-    
-    
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;

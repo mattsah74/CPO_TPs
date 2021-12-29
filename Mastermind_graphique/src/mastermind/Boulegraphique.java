@@ -30,24 +30,23 @@ public class Boulegraphique extends JButton {
     @Override
     public void paintComponent (Graphics G) {
         super.paintComponent(G);
-        if(bouleassoc == null){
-            setIcon(img_vide);
-        }
-        else{
-            if(bouleassoc.Couleur == "rouge"){
-                setIcon(img_rouge);
-            }
-            else if(bouleassoc.Couleur == "jaune"){
-                setIcon(img_jaune);
-            }        
-            else if(bouleassoc.Couleur == "vert"){
-                setIcon(img_vert);
-            }
-            else if(bouleassoc.Couleur == "bleu"){
-                setIcon(img_bleu);
-            }
-            else if(bouleassoc.Couleur == "null"){
-                setIcon(img_vide);
+        for(int i=11; i>=0; i--){
+            for(int j=0; j<4; j++){
+                if(bouleassoc.Couleur == "rouge"){
+                    setIcon(img_rouge);
+                }
+                else if(bouleassoc.Couleur == "jaune"){
+                    setIcon(img_jaune);
+                }        
+                else if(bouleassoc.Couleur == "vert"){
+                    setIcon(img_vert);
+                }
+                else if(bouleassoc.Couleur == "bleu"){
+                    setIcon(img_bleu);
+                }
+                else if(bouleassoc.Couleur == "temp"){
+                    setIcon(img_vide);
+                }
             }
         }
     }
