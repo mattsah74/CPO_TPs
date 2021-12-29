@@ -27,7 +27,14 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             for (int j = 0; j < 4; j++) {
                 Boulegraphique boulegraph = new Boulegraphique(grillejeu.grille[i][j]);
                 pan_grillejeu.add(boulegraph);
+                
+            }
+        }
+        for (int i = 0; i < 12; i++) { 
+            for (int j = 0; j < 4; j++) {
+                Boulegraphique boulegraph = new Boulegraphique(grillejeu.grille[i][j]);
                 pan_indice.add(boulegraph);
+                
             }
         }
         
@@ -129,7 +136,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                 btn4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 620, -1, -1));
+        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, -1, -1));
 
         btn1.setText("1");
         btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +152,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                 btn2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, -1, -1));
+        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 620, -1, -1));
 
         btn3.setText("3");
         btn3.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +160,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                 btn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 620, -1, -1));
+        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 620, -1, -1));
 
         pan_grillejeu.setBackground(new java.awt.Color(204, 102, 0));
         pan_grillejeu.setLayout(new java.awt.GridLayout(12, 4));
