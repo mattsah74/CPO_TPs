@@ -18,7 +18,7 @@ public class fenetrededemmarage extends javax.swing.JFrame {
     public fenetrededemmarage() {
         initComponents();
     }
-    fenetreDeJeu fen_moyen = new fenetreDeJeu();
+    fenetreDeJeu_moyen fen_moyen = new fenetreDeJeu_moyen();
     fenetreDeJeu_facile fen_facile = new fenetreDeJeu_facile();
 
     /**
@@ -40,7 +40,9 @@ public class fenetrededemmarage extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Bonjour et Bienvenue au Mastermind de Matthieu et Anthony\n\nVeuillez selectionner le mode de jeu:\n\n- Facile: 3 boules à découvrir avec 4 couleurs différentes\n- Moyen: 4 boules à découvrir avec 4 couleurs différentes\n- Difficile: 5 boules à découvrir avec 6 couleurs différentes\n\nBonne Chance ;)");
+        jTextArea1.setText("Bonjour et bienvenue au Mastermind de Matthieu et Anthony\n\nVeuillez sélectionner le mode de jeu:\n\n- Facile: 3 boules à découvrir avec 4 couleurs différentes\n- Moyen: 4 boules à découvrir avec 4 couleurs différentes\n- Difficile: 5 boules à découvrir avec 6 couleurs différentes\n\nBonne chance ;)");
+        jTextArea1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(jTextArea1);
 
         btn_facile.setText("Facile");
@@ -75,9 +77,9 @@ public class fenetrededemmarage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(btn_facile)
-                .addGap(41, 41, 41)
+                .addGap(45, 45, 45)
                 .addComponent(btn_moyen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addComponent(btn_dur)
                 .addGap(50, 50, 50))
         );

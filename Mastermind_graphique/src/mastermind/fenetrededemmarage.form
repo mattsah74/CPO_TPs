@@ -31,9 +31,9 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="btn_facile" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="btn_moyen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="btn_dur" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
@@ -67,7 +67,15 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Bonjour et Bienvenue au Mastermind de Matthieu et Anthony&#xa;&#xa;Veuillez selectionner le mode de jeu:&#xa;&#xa;- Facile: 3 boules &#xe0; d&#xe9;couvrir avec 4 couleurs diff&#xe9;rentes&#xa;- Moyen: 4 boules &#xe0; d&#xe9;couvrir avec 4 couleurs diff&#xe9;rentes&#xa;- Difficile: 5 boules &#xe0; d&#xe9;couvrir avec 6 couleurs diff&#xe9;rentes&#xa;&#xa;Bonne Chance ;)"/>
+            <Property name="text" type="java.lang.String" value="Bonjour et bienvenue au Mastermind de Matthieu et Anthony&#xa;&#xa;Veuillez s&#xe9;lectionner le mode de jeu:&#xa;&#xa;- Facile: 3 boules &#xe0; d&#xe9;couvrir avec 4 couleurs diff&#xe9;rentes&#xa;- Moyen: 4 boules &#xe0; d&#xe9;couvrir avec 4 couleurs diff&#xe9;rentes&#xa;- Difficile: 5 boules &#xe0; d&#xe9;couvrir avec 6 couleurs diff&#xe9;rentes&#xa;&#xa;Bonne chance ;)"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Text Cursor"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
