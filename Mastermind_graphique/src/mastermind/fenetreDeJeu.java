@@ -33,6 +33,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     int numcolonne = 0;
     boolean validation = false;
     int numligne = 0;
+    
 
     /**
      * Creates new form fenetreDeJeu
@@ -64,7 +65,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             }
         }
         message.setText("Bienvenue au Mastermind ! \n Selectionnez la difficulté de jeu:");
-        message.setText("Bienvenue au Mastermind ! \nIl existe 3 modes de jeu :\n1. Simple (Aligne 3 couleurs en moins de 12 essais tu as le choix entre 4 couleurs différentes)\n2. Normal (Aligne 4 couleurs en moins de 12 essais, tu as le choix entre 4 couleurs différentes)\n3. Extrême (Aligne 5 couleurs en moins de 15 essis,tu as le choix entre 6 couleurs différentes)");
+        message.setText("Bienvenue au Mastermind ! \nIl existe 3 modes de jeu :\n1. Facile (Aligne 3 couleurs en moins de 12 essais tu as le choix entre 4 couleurs différentes)\n2. Moyen (Aligne 4 couleurs en moins de 12 essais, tu as le choix entre 4 couleurs différentes)\n3. Difficile (Aligne 5 couleurs en moins de 15 essis,tu as le choix entre 6 couleurs différentes)");
        
     }
 
@@ -161,9 +162,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         message.setRows(5);
         jScrollPane1.setViewportView(message);
 
-        pan_message.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 110));
+        pan_message.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 130));
 
-        getContentPane().add(pan_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 250, 280, 130));
+        getContentPane().add(pan_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 280, 150));
 
         btn1.setText("1");
         btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -308,9 +309,19 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         int[] indice= verifiercombi(numligne,mode);
         int nbR = indice[0];
         int nbB = indice[1];
-        String nbRstring = String.valueOf(nbR);
-        String nbBstring = String.valueOf(nbB);
-        message.setText("rouge: "+nbRstring+" blanc: "+nbBstring);
+        majgrilleindice(indice, numligne);
+        pan_indice.repaint();
+        message.setText("Pour rappel:\n  Rouge: une bonne couleur bien placée \n  Blanc: une bonne couleur mais mal placée \n \nAttention l'emplacement des indices ne \ncorrespond pas forcément à celui de votre \ncombinaison !");
+        String prenom = nomjoueurgraph.getText();
+        if(nbR == 4){
+            message.setText("Bravo "+prenom+" ! Vous avez gagné !");
+            btn_startfacile.setEnabled(true);
+            btn_startmoyen.setEnabled(true);
+            btn_startdur.setEnabled(true);
+        }
+        else if(numligne==11){
+            message.setText("vous avez perdu");
+        }
         numligne +=1;
     }//GEN-LAST:event_btn_validerActionPerformed
 
@@ -451,37 +462,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
     }
 
-    public void initialiserpartie() {
-        int bon = 0;
-        int modetemporaire = 0;
-        System.out.println("___________________MASTERMIND by Matthieu and Anthony___________________");
-        System.out.println("Bonjour !\nBienvenue sur le Mastermind imaginé par Matthieu et Anthony");
-        String prenom = nomjoueurgraph.getText();
-        System.out.println("A vous de jouer " + prenom + " !");
-        System.out.println("Il existe 3 modes de jeu :\n1- Le mode 'Simple' (Aligne les 3 couleurs dans l'ordre imaginé par l'ordinateur en moins de 12 essais, tu as le choix entre 4 couleurs différentes)\n2- Le mode 'Normal' (Aligne 4 couleurs en moins de 12 essais, tu as le choix entre 4 couleurs différentes)\n3- Le mode 'Extrême' (Aligne 5 couleurs en moins de 15 essis,tu as le choix entre 6 couleurs différentes)");
-        while (bon != 1) {
-            System.out.println("\nVeuillez saisir un mode de jeu (1, 2, ou 3) :");
-//            modetemporaire = sc.nextInt();
-            // System.out.println(modetemporaire);
-            if (modetemporaire == 1 || modetemporaire == 2 || modetemporaire == 3) {
-                if (modetemporaire == 1) {
-                    mode = 1;
-                } else if (modetemporaire == 2) {
-                    mode = 2;
-                } else if (modetemporaire == 3) {
-                    mode = 3;
-                }
-                // System.out.println(mode);
-                bon = 1;
-            } else {
-                System.out.println("Je n'ai pas compris...");
-                System.out.println(" ");
-                continue;
-            }
-
-        }
-
-    }
+    
 
     public void jouerdanscolonne(String coul, int l, int c, int mode) {
         if (mode == 1) {
@@ -494,84 +475,16 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         pan_grillejeu.repaint();
     }
 
-    public void debuterpartie() {
-        int finpartie = 1; // Pour arrêter la partie finpartie = 2.
-        int valcouleur = 0;
-        String couleur;
-        int niemecouleur = 1;
-        int bon = 0;
-        int nbRB[] = new int[2];
-        int nbtour = 0; // comptabilise le nombre de tours avant victoire pour enregistrer le score
-        int nbcolonne;// nbcolonne sera le nombre de colonnes associées à la grille de jeu correspondsante au mode choisi par l'utilisateur
-        int nbligne; // pareil que nbcolonne mais correspondant au nombre de tours total
-        if (mode == 1) {
-            nbcolonne = 3;
-            nbligne = 12;
-        } else if (mode == 2) {
-            nbcolonne = 4;
-            nbligne = 12;
-        } else {
-            nbcolonne = 5;
-            nbligne = 15;
-        }
-        message.setText("L'ordinateur a générer sa combinaison \n Cliquez sur la colonne dont vous souhaitez modifier la couleur \n Puis Cliquez sur la couleur\n une fois les 4 colonnes remplies, validez");
-        grillejeu.creercombinaison(mode); // La liste de référence est créée
-        message.setText(combi2 + "");
-
-        while (finpartie != 2) {
-            if (mode == 2) {
-                for (int i = 0; i < 12; i++) {
-                    while (validation == false) { // Début des 12 boucles pour trouver la ligne de l'ordinateur.
-                        nbtour += 1;
-                        grillejeu.ajouterboule(bouleselec, numligne, numcolonne, mode);
-                        message.setText("Voyons ce qu'il en est :");// rajouter ajouter les indices
-                    }
-                    nbRB = grillejeu.verifiercombi(i, mode);
-                    // rajouter ajouter les indices
-                    if (nbRB[0] == 4) {
-                        message.setText("Vous avez gagné");
-                        finpartie = 2;
-                        break;
-                    } else if (i == 11 && nbRB[0] != 4) {
-                        message.setText("Vous avez perdu.");
-                        finpartie = 2;
-                        break;
-                    } else {
-                        message.setText("Vous y êtes presque, continuez !");
-                    }
-                }
-            } else if (mode == 3) {
-                for (int i = 0; i < 15; i++) { // Début des 12 boucles pour trouver la ligne de l'ordinateur.
-                    while (validation == false) { // Début des 12 boucles pour trouver la ligne de l'ordinateur.
-                        nbtour += 1;
-                        grillejeu.ajouterboule(bouleselec, numligne, numcolonne, mode);
-                        message.setText("Voyons ce qu'il en est :");// rajouter ajouter les indices
-                    }
-                    nbRB = grillejeu.verifiercombi(i, mode);
-                    // rajouter ajouter les indices
-                    if (nbRB[0] == 5) {
-                        System.out.println("Vous avez gagné");
-                        finpartie = 2;
-                        break;
-                    } else if (i == 14 && nbRB[0] != 5) {
-                        System.out.println("Vous avez perdu.");
-                        finpartie = 2;
-                        break;
-                    } else {
-                        System.out.println("Vous y êtes presque, continuez !");
-                    }
-
-                }
-            }
-
-        }
-    }
-    
-    public void majgrilleindice(int tab[]){
+    public void majgrilleindice(int tab[], int l){
         int nbR = tab[0];
         int nbB = tab[1];
-        for(int i=0; i<4;i++){
+        int temp =0;
+        for(int i=0; i<nbR; i++){
+            grilleindice2[l][i].Couleur = "indrouge";
             
+        }
+        for(int j=3; j>=(4-nbB) ; j--){
+            grilleindice2[l][j].Couleur = "indblanc";
         }
     }
     

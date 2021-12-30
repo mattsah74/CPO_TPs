@@ -47,6 +47,12 @@ public class Boulegraphique extends JButton {
                 else if(bouleassoc.Couleur == "temp"){
                     setIcon(img_vide);
                 }
+                else if(bouleassoc.Couleur == "indrouge"){
+                    setIcon(img_indrouge);
+                }
+                else if(bouleassoc.Couleur == "indblanc"){
+                    setIcon(img_indblanc);
+                }
             }
         }
     }
