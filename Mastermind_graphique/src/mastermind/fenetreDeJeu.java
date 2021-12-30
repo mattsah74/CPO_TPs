@@ -21,7 +21,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     String combi2[] = new String[4]; // initialise une ligne pour la combinaison mode 2
     String listecoul12[] = {"jaune", "rouge", "bleu", "vert"}; // couleurs mode 1 et 2
     int aide12[][] = new int[12][2]; // grille qui nous donnera le nombre de jetons correctement^placée et le nombre de jetons de la bonne couleur présents
-    int aide3[][] = new int[15][2];
     Boule[][] grille;
     Boule bouleselec;
     int numcolonne = 0;
