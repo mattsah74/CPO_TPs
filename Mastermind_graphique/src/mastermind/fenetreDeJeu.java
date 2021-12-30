@@ -34,7 +34,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     public fenetreDeJeu() {
         initComponents();
         for (int i = 0; i < 12; i++) { // cree le tableau de jeu 
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 4; j++) {
                 Boule b2 = new Boule("temp"); //initialise avec des boules de base 
                 grillemode2[i][j] = b2;
                 Boulegraphique boulegraph = new Boulegraphique(grillemode2[i][j]); 
@@ -43,7 +43,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             }
         }
         for (int i = 0; i < 12; i++) { // cree le tableau indice
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 4; j++) {
                 Boule b2 = new Boule("temp"); //initialise avec des boules de base 
                 grilleindice2[i][j] = b2;
                 Boulegraphique boulegraph = new Boulegraphique(grilleindice2[i][j]);
@@ -406,9 +406,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         }
     }
 
-    public void creationpanneau(int mode){
-        
-    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn1;

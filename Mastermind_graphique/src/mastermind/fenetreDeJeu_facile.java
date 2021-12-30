@@ -15,7 +15,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
 
     Grille grillejeu = new Grille(1);
     String nomjoueur;
-    int mode;
+    int mode=1;
     Boule grillemode1[][] = new Boule[12][3]; // initialise notre grille du mode 1
     Boule grilleindice1[][] = new Boule[12][3]; //initialise grille indice du mode 2
     String combi1[] = new String[3]; // initialise une ligne pour la combinaison mode 1
@@ -34,7 +34,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
     public fenetreDeJeu_facile() {
         initComponents();
         for (int i = 0; i < 12; i++) { // cree le tableau de jeu 
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 Boule b2 = new Boule("temp"); //initialise avec des boules de base 
                 grillemode1[i][j] = b2;
                 Boulegraphiquefacile boulegraph = new Boulegraphiquefacile(grillemode1[i][j]); 
@@ -43,7 +43,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
             }
         }
         for (int i = 0; i < 12; i++) { // cree le tableau indice
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 3; j++) {
                 Boule b2 = new Boule("temp"); //initialise avec des boules de base 
                 grilleindice1[i][j] = b2;
                 Boulegraphique boulegraph = new Boulegraphique(grilleindice1[i][j]);
@@ -76,10 +76,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         pan_infojeu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nomjoueurgraph = new javax.swing.JTextField();
-        btn_startfacile = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        btn_startmoyen = new javax.swing.JButton();
-        btn_startdur = new javax.swing.JButton();
         pan_message = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         message = new javax.swing.JTextArea();
@@ -91,12 +88,10 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         numcase = new javax.swing.JLabel();
         btn_valider = new javax.swing.JButton();
-        btn_marron = new javax.swing.JButton();
         btn_bleu1 = new javax.swing.JButton();
         btn_rouge = new javax.swing.JButton();
         btn_vert = new javax.swing.JButton();
         btn_jaune = new javax.swing.JButton();
-        btn_orange = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,34 +113,10 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         });
         pan_infojeu.add(nomjoueurgraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 100, -1));
 
-        btn_startfacile.setText("Facile");
-        btn_startfacile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_startfacileActionPerformed(evt);
-            }
-        });
-        pan_infojeu.add(btn_startfacile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
-
         jLabel2.setText("Nom du Joueur : ");
         pan_infojeu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        btn_startmoyen.setText("Moyen");
-        btn_startmoyen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_startmoyenActionPerformed(evt);
-            }
-        });
-        pan_infojeu.add(btn_startmoyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
-
-        btn_startdur.setText("Difficile");
-        btn_startdur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_startdurActionPerformed(evt);
-            }
-        });
-        pan_infojeu.add(btn_startdur, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
-
-        getContentPane().add(pan_infojeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 280, 130));
+        getContentPane().add(pan_infojeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 280, 90));
 
         pan_message.setBackground(new java.awt.Color(0, 153, 204));
         pan_message.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -156,7 +127,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
 
         pan_message.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 130));
 
-        getContentPane().add(pan_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 280, 150));
+        getContentPane().add(pan_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 280, 150));
 
         btn1.setText("1");
         btn1.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +135,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, -1, -1));
+        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 620, -1, -1));
 
         btn2.setText("2");
         btn2.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +143,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 620, -1, -1));
+        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
 
         btn3.setText("3");
         btn3.addActionListener(new java.awt.event.ActionListener() {
@@ -180,11 +151,11 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 620, -1, -1));
+        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 620, -1, -1));
 
         pan_grillejeu.setBackground(new java.awt.Color(204, 102, 0));
         pan_grillejeu.setLayout(new java.awt.GridLayout(12, 3));
-        getContentPane().add(pan_grillejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 400, 600));
+        getContentPane().add(pan_grillejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 300, 600));
 
         pan_couleur.setBackground(new java.awt.Color(0, 153, 204));
         pan_couleur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,17 +170,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn_validerActionPerformed(evt);
             }
         });
-        pan_couleur.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
-
-        btn_marron.setBackground(new java.awt.Color(153, 51, 0));
-        btn_marron.setForeground(new java.awt.Color(0, 0, 0));
-        btn_marron.setText("Marron");
-        btn_marron.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_marronActionPerformed(evt);
-            }
-        });
-        pan_couleur.add(btn_marron, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+        pan_couleur.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
         btn_bleu1.setBackground(new java.awt.Color(51, 0, 255));
         btn_bleu1.setForeground(new java.awt.Color(0, 0, 0));
@@ -219,7 +180,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn_bleu1ActionPerformed(evt);
             }
         });
-        pan_couleur.add(btn_bleu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        pan_couleur.add(btn_bleu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 70, 50));
 
         btn_rouge.setBackground(new java.awt.Color(255, 0, 0));
         btn_rouge.setForeground(new java.awt.Color(0, 0, 0));
@@ -229,7 +190,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn_rougeActionPerformed(evt);
             }
         });
-        pan_couleur.add(btn_rouge, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+        pan_couleur.add(btn_rouge, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 70, 50));
 
         btn_vert.setBackground(new java.awt.Color(0, 153, 0));
         btn_vert.setForeground(new java.awt.Color(0, 0, 0));
@@ -239,7 +200,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn_vertActionPerformed(evt);
             }
         });
-        pan_couleur.add(btn_vert, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
+        pan_couleur.add(btn_vert, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 70, 50));
 
         btn_jaune.setBackground(new java.awt.Color(255, 255, 51));
         btn_jaune.setForeground(new java.awt.Color(0, 0, 0));
@@ -250,19 +211,9 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
                 btn_jauneActionPerformed(evt);
             }
         });
-        pan_couleur.add(btn_jaune, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        pan_couleur.add(btn_jaune, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, 50));
 
-        btn_orange.setBackground(new java.awt.Color(255, 102, 0));
-        btn_orange.setForeground(new java.awt.Color(0, 0, 0));
-        btn_orange.setText("Orange");
-        btn_orange.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_orangeActionPerformed(evt);
-            }
-        });
-        pan_couleur.add(btn_orange, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
-
-        getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 280, 180));
+        getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 280, 210));
 
         setBounds(0, 0, 1034, 681);
     }// </editor-fold>//GEN-END:initComponents
@@ -282,9 +233,6 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         String prenom = nomjoueurgraph.getText();
         if(nbR == 3){
             message.setText("Bravo "+prenom+" ! Vous avez gagné !");
-            btn_startfacile.setEnabled(true);
-            btn_startmoyen.setEnabled(true);
-            btn_startdur.setEnabled(true);
         }
         else if(numligne==11){
             message.setText("Dommage, c'est perdu...");
@@ -306,26 +254,6 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         numcase.setText("3ème colonne");
         numcolonne = 2;
     }//GEN-LAST:event_btn3ActionPerformed
-
-    private void btn_startmoyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startmoyenActionPerformed
-        pan_message.setVisible(true);
-        pan_grillejeu.setVisible(true);
-        pan_indice.setVisible(true);
-        pan_couleur.setVisible(true);
-        btn1.setVisible(true);
-        btn2.setVisible(true);
-        btn3.setVisible(true);
-        btn4.setVisible(true);
-        btn_startfacile.setEnabled(false);
-        btn_startmoyen.setEnabled(false);
-        btn_startdur.setEnabled(false);
-        btn_orange.setEnabled(false);
-        btn_marron.setEnabled(false);
-        mode = 2;
-        
-        
-        
-    }//GEN-LAST:event_btn_startmoyenActionPerformed
 
     private void btn_bleu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bleu1ActionPerformed
         Boule bouleselec = new Boule("bleu");
@@ -350,49 +278,6 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         jouerdanscolonne("jaune", numligne, numcolonne, mode);
         pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_jauneActionPerformed
-
-    private void btn_orangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_orangeActionPerformed
-        Boule bouleselec = new Boule("orange");
-        jouerdanscolonne("orange", numligne, numcolonne, mode);
-        pan_grillejeu.repaint();
-    }//GEN-LAST:event_btn_orangeActionPerformed
-
-    private void btn_marronActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_marronActionPerformed
-        Boule bouleselec = new Boule("marron");
-        jouerdanscolonne("marron", numligne, numcolonne, mode);
-        pan_grillejeu.repaint();
-    }//GEN-LAST:event_btn_marronActionPerformed
-
-    private void btn_startdurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startdurActionPerformed
-        pan_message.setVisible(true);
-        pan_grillejeu.setVisible(true);
-        pan_indice.setVisible(true);
-        pan_couleur.setVisible(true);
-        btn1.setVisible(true);
-        btn2.setVisible(true);
-        btn3.setVisible(true);
-        btn4.setVisible(true);
-        btn_startfacile.setEnabled(false);
-        btn_startmoyen.setEnabled(false);
-        btn_startdur.setEnabled(false);
-        mode = 3;
-    }//GEN-LAST:event_btn_startdurActionPerformed
-
-    private void btn_startfacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startfacileActionPerformed
-        pan_message.setVisible(true);
-        pan_grillejeu.setVisible(true);
-        pan_indice.setVisible(true);
-        pan_couleur.setVisible(true);
-        btn1.setVisible(true);
-        btn2.setVisible(true);
-        btn3.setVisible(true);
-        btn4.setVisible(true);
-        btn_startfacile.setEnabled(false);
-        btn_startmoyen.setEnabled(false);
-        btn_startdur.setEnabled(false);
-        mode = 1;
-
-    }//GEN-LAST:event_btn_startfacileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -442,11 +327,11 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         int nbB = tab[1];
         int temp =0;
         for(int i=0; i<nbR; i++){
-            grilleindice1[l][i].Couleur = "indrouge";
+            grilleindice1[l][i].Couleur = "indrouge_facile";
             
         }
-        for(int j=3; j>=(3-nbB) ; j--){
-            grilleindice1[l][j].Couleur = "indblanc";
+        for(int j=2; j>=(3-nbB) ; j--){
+            grilleindice1[l][j].Couleur = "indblanc_facile";
         }
     }
     
@@ -495,7 +380,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         Random nb = new Random();
         if (mode == 1) {
             for (int i = 0; i < 3; i++) {
-                int alea = nb.nextInt(3);
+                int alea = nb.nextInt(4);
                 combi1[i] = listecoul12[alea];
             }
         }
@@ -510,12 +395,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
     private javax.swing.JButton btn3;
     private javax.swing.JButton btn_bleu1;
     private javax.swing.JButton btn_jaune;
-    private javax.swing.JButton btn_marron;
-    private javax.swing.JButton btn_orange;
     private javax.swing.JButton btn_rouge;
-    private javax.swing.JButton btn_startdur;
-    private javax.swing.JButton btn_startfacile;
-    private javax.swing.JButton btn_startmoyen;
     private javax.swing.JButton btn_valider;
     private javax.swing.JButton btn_vert;
     private javax.swing.JLabel jLabel1;

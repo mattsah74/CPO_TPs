@@ -22,6 +22,8 @@ public class Boulegraphique extends JButton {
     ImageIcon img_indrouge = new javax.swing.ImageIcon(getClass().getResource("/images/carind_rouge.png"));
     ImageIcon img_indblanc = new javax.swing.ImageIcon(getClass().getResource("/images/carind_blanc.png"));
     ImageIcon img_indvide = new javax.swing.ImageIcon(getClass().getResource("/images/carind_vide.png"));
+    ImageIcon img_indrouge_facile = new javax.swing.ImageIcon(getClass().getResource("/images/carind_rouge_facile.png"));
+    ImageIcon img_indblanc_facile = new javax.swing.ImageIcon(getClass().getResource("/images/carind_blanc_facile.png"));
     
     public Boulegraphique (Boule uneboule){
         bouleassoc = uneboule;
@@ -52,6 +54,12 @@ public class Boulegraphique extends JButton {
                 }
                 else if(bouleassoc.Couleur == "indblanc"){
                     setIcon(img_indblanc);
+                }
+                else if(bouleassoc.Couleur == "indblanc_facile"){
+                    setIcon(img_indblanc_facile);
+                }
+                else if(bouleassoc.Couleur == "indrouge_facile"){
+                    setIcon(img_indrouge_facile);
                 }
             }
         }

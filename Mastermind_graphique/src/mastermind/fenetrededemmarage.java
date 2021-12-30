@@ -19,7 +19,7 @@ public class fenetrededemmarage extends javax.swing.JFrame {
         initComponents();
     }
     fenetreDeJeu fen_moyen = new fenetreDeJeu();
-    fenetreDeJeu fen_facile = new fenetreDeJeu();
+    fenetreDeJeu_facile fen_facile = new fenetreDeJeu_facile();
 
     /**
      * This method is called from within the constructor to initialize the form.
