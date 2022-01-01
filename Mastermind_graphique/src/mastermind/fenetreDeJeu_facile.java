@@ -174,6 +174,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         pan_couleur.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
         btn_bleu1.setBackground(new java.awt.Color(51, 0, 255));
+        btn_bleu1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_bleu1.setForeground(new java.awt.Color(0, 0, 0));
         btn_bleu1.setText("Bleu");
         btn_bleu1.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +185,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         pan_couleur.add(btn_bleu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 70, 50));
 
         btn_rouge.setBackground(new java.awt.Color(255, 0, 0));
+        btn_rouge.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_rouge.setForeground(new java.awt.Color(0, 0, 0));
         btn_rouge.setText("Rouge");
         btn_rouge.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +196,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         pan_couleur.add(btn_rouge, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 70, 50));
 
         btn_vert.setBackground(new java.awt.Color(0, 153, 0));
+        btn_vert.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_vert.setForeground(new java.awt.Color(0, 0, 0));
         btn_vert.setText("Vert");
         btn_vert.addActionListener(new java.awt.event.ActionListener() {
@@ -204,6 +207,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         pan_couleur.add(btn_vert, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 70, 50));
 
         btn_jaune.setBackground(new java.awt.Color(255, 255, 51));
+        btn_jaune.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_jaune.setForeground(new java.awt.Color(0, 0, 0));
         btn_jaune.setText("Jaune");
         btn_jaune.setToolTipText("");
