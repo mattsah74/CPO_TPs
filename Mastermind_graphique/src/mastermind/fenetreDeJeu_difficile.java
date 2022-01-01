@@ -144,7 +144,7 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
                 btn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 620, -1, -1));
+        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 615, -1, -1));
 
         btn2.setText("2");
         btn2.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
                 btn2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, -1, -1));
+        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 615, -1, -1));
 
         btn5.setText("5");
         btn5.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +160,7 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
                 btn5ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, -1, -1));
+        getContentPane().add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 615, -1, -1));
 
         pan_grillejeu.setBackground(new java.awt.Color(204, 102, 0));
         pan_grillejeu.setLayout(new java.awt.GridLayout(15, 5));
@@ -252,7 +252,7 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
                 btn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, -1, -1));
+        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 615, -1, -1));
 
         btn4.setText("4");
         btn4.addActionListener(new java.awt.event.ActionListener() {
@@ -260,13 +260,13 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
                 btn4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 620, -1, -1));
+        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 615, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("GRILLE D'INDICE");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 620, -1, -1));
 
-        setBounds(0, 0, 1934, 1117);
+        setBounds(0, 0, 1514, 690);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomjoueurgraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurgraphActionPerformed

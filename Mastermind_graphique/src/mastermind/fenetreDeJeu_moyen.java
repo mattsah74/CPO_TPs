@@ -97,6 +97,7 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         btn_jaune = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(10, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pan_indice.setBackground(new java.awt.Color(204, 102, 0));
@@ -226,7 +227,7 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
 
         getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 280, 210));
 
-        setBounds(0, 0, 1034, 681);
+        setBounds(0, 0, 1514, 690);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomjoueurgraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurgraphActionPerformed

@@ -216,7 +216,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
 
         getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 280, 210));
 
-        setBounds(0, 0, 1034, 681);
+        setBounds(0, 0, 1514, 690);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomjoueurgraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurgraphActionPerformed
