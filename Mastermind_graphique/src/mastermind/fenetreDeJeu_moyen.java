@@ -59,6 +59,7 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         String c = String.valueOf(combi2[2]);
         String d = String.valueOf(combi2[3]);
         message.setText(a+b+c+d);
+        numcase.setText("1ère colonne");
     }
 
     /**

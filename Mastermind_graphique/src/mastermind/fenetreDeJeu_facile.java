@@ -58,6 +58,7 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
         
         message.setText("L'ordinateur a déjà choisi sa combinaison.\nA vous de trouver laquelle c'est...\n\nCliquez sur le numéro de la colonne en bas \nPuis sur la couleur que vous souhaitez mettre");
         message.setText(a+b+c);
+        numcase.setText("1ère colonne");
     }
 
     /**

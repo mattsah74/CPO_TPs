@@ -19,6 +19,8 @@ public class Boulegraphiquedifficile extends JButton {
     ImageIcon img_rouge = new javax.swing.ImageIcon(getClass().getResource("/images/car_rouge.png"));
     ImageIcon img_vert = new javax.swing.ImageIcon(getClass().getResource("/images/car_vert.png"));
     ImageIcon img_jaune = new javax.swing.ImageIcon(getClass().getResource("/images/car_jaune.png"));
+    ImageIcon img_orange = new javax.swing.ImageIcon(getClass().getResource("/images/car_orange.png"));
+    ImageIcon img_marron = new javax.swing.ImageIcon(getClass().getResource("/images/car_marron.png"));
     ImageIcon img_indrouge = new javax.swing.ImageIcon(getClass().getResource("/images/carind_rouge.png"));
     ImageIcon img_indblanc = new javax.swing.ImageIcon(getClass().getResource("/images/carind_blanc.png"));
     ImageIcon img_indvide = new javax.swing.ImageIcon(getClass().getResource("/images/carind_vide.png"));
@@ -43,6 +45,12 @@ public class Boulegraphiquedifficile extends JButton {
                 }
                 else if(bouleassoc.Couleur == "bleu"){
                     setIcon(img_bleu);
+                }
+                else if(bouleassoc.Couleur == "orange"){
+                    setIcon(img_orange);
+                }
+                else if(bouleassoc.Couleur == "marron"){
+                    setIcon(img_marron);
                 }
                 else if(bouleassoc.Couleur == "temp"){
                     setIcon(img_vide);

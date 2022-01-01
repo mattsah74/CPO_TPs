@@ -20,6 +20,7 @@ public class fenetrededemmarage extends javax.swing.JFrame {
     }
     fenetreDeJeu_moyen fen_moyen = new fenetreDeJeu_moyen();
     fenetreDeJeu_facile fen_facile = new fenetreDeJeu_facile();
+    fenetreDeJeu_difficile fen_dur = new fenetreDeJeu_difficile();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,7 +111,8 @@ public class fenetrededemmarage extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_facileActionPerformed
 
     private void btn_durActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_durActionPerformed
-        // TODO add your handling code here:
+        fen_dur.setVisible(true);
+        fen_dur.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btn_durActionPerformed
 
     /**
