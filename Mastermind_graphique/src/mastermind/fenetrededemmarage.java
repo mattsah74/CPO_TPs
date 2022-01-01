@@ -40,13 +40,17 @@ public class fenetrededemmarage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(480, 210));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setText("Bonjour et bienvenue au Mastermind de Matthieu et Anthony\n\nVeuillez sélectionner le mode de jeu:\n\n- Facile: 3 boules à découvrir avec 4 couleurs différentes\n- Moyen: 4 boules à découvrir avec 4 couleurs différentes\n- Difficile: 5 boules à découvrir avec 6 couleurs différentes\n\nBonne chance ;)");
         jTextArea1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextArea1.setHighlighter(null);
         jScrollPane1.setViewportView(jTextArea1);
 
+        btn_facile.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_facile.setText("Facile");
         btn_facile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +58,7 @@ public class fenetrededemmarage extends javax.swing.JFrame {
             }
         });
 
+        btn_dur.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_dur.setText("Difficile");
         btn_dur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +66,7 @@ public class fenetrededemmarage extends javax.swing.JFrame {
             }
         });
 
+        btn_moyen.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn_moyen.setText("Moyen");
         btn_moyen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,29 +78,32 @@ public class fenetrededemmarage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(btn_facile)
-                .addGap(45, 45, 45)
-                .addComponent(btn_moyen)
-                .addGap(45, 45, 45)
-                .addComponent(btn_dur)
-                .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btn_facile)
+                        .addGap(32, 32, 32)
+                        .addComponent(btn_moyen)
+                        .addGap(32, 32, 32)
+                        .addComponent(btn_dur)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_facile)
-                    .addComponent(btn_moyen)
-                    .addComponent(btn_dur))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_dur, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_facile, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_moyen, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 

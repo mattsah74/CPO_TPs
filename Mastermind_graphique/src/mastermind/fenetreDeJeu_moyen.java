@@ -50,8 +50,7 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
                 pan_indice.add(boulegraph);
             }
         }
-        
-        message.setText("L'ordinateur a déjà choisi sa combinaison.\nA vous de trouver laquelle c'est...\n\nCliquez sur le numéro de la colonne en bas \nPuis sur la couleur que vous souhaitez mettre");
+        message.setText("L'ordinateur a déjà choisi sa combinaison.\nA vous de trouver laquelle c'est...\n\nRentrez votre nom,\nCliquez sur le numéro de la colonne\nPuis sur la couleur que vous souhaitez\nmettre");
         grillejeu = new Grille(mode);
         creercombinaison(mode);
         String a = String.valueOf(combi2[0]);
@@ -79,9 +78,6 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         nomjoueurgraph = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        pan_message = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        message = new javax.swing.JTextArea();
         btn1 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
@@ -95,6 +91,9 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         btn_rouge = new javax.swing.JButton();
         btn_vert = new javax.swing.JButton();
         btn_jaune = new javax.swing.JButton();
+        pan_message1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        message = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(10, 0));
@@ -122,48 +121,41 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
 
         getContentPane().add(pan_infojeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 280, 90));
 
-        pan_message.setBackground(new java.awt.Color(0, 153, 204));
-        pan_message.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        message.setColumns(20);
-        message.setRows(5);
-        jScrollPane1.setViewportView(message);
-
-        pan_message.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 130));
-
-        getContentPane().add(pan_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 200, 280, 150));
-
+        btn1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn1.setText("1");
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, -1, -1));
+        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 617, -1, -1));
 
+        btn2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn2.setText("2");
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 620, -1, -1));
+        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 617, -1, -1));
 
+        btn3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn3.setText("3");
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 620, -1, -1));
+        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 617, -1, -1));
 
+        btn4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btn4.setText("4");
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, -1, -1));
+        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 617, -1, -1));
 
         pan_grillejeu.setBackground(new java.awt.Color(204, 102, 0));
         pan_grillejeu.setLayout(new java.awt.GridLayout(12, 4));
@@ -234,7 +226,19 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
 
         getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 390, 280, 210));
 
-        setBounds(0, 0, 1514, 690);
+        pan_message1.setBackground(new java.awt.Color(0, 153, 204));
+        pan_message1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        message.setEditable(false);
+        message.setColumns(20);
+        message.setRows(5);
+        jScrollPane2.setViewportView(message);
+
+        pan_message1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 130));
+
+        getContentPane().add(pan_message1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 180, 280, 180));
+
+        setBounds(0, 0, 1528, 727);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nomjoueurgraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurgraphActionPerformed
@@ -432,7 +436,7 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea message;
     private javax.swing.JTextField nomjoueurgraph;
     private javax.swing.JLabel numcase;
@@ -440,6 +444,6 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
     private javax.swing.JPanel pan_grillejeu;
     private javax.swing.JPanel pan_indice;
     private javax.swing.JPanel pan_infojeu;
-    private javax.swing.JPanel pan_message;
+    private javax.swing.JPanel pan_message1;
     // End of variables declaration//GEN-END:variables
 }
