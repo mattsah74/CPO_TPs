@@ -6,6 +6,7 @@ package mastermind;
 
 import java.util.Random;
 import javax.swing.JFrame;
+import java.io.PrintWriter;
 
 /**
  *
@@ -308,6 +309,10 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
         String prenom = nomjoueurgraph.getText();
         if(nbR == 5){
             message.setText("Bravo "+prenom+" ! Vous avez gagné !");
+            PrintWriter writer = new PrintWriter(prenom+".txt");
+            writer.println(nomjoueur);
+            writer.println("Ce joueur a gagné en " + nbtour + " tours.");
+            writer.close();
         }
         else if(numligne==14){
             message.setText("Dommage, c'est perdu...");
