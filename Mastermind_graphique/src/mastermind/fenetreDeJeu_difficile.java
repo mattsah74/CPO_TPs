@@ -6,7 +6,7 @@ package mastermind;
 
 import java.util.Random;
 import javax.swing.JFrame;
-import java.io.PrintWriter;
+import java.io.PrintWriter; 
 
 /**
  *
@@ -53,11 +53,11 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
         }
         grillejeu = new Grille(mode);
         creercombinaison(mode);
-        String a = String.valueOf(combi3[0]);
-        String b = String.valueOf(combi3[1]);
-        String c = String.valueOf(combi3[2]);
-        String d = String.valueOf(combi3[3]);
-        String e = String.valueOf(combi3[4]);
+        String a = combi3[0];
+        String b = combi3[1];
+        String c = combi3[2];
+        String d = combi3[3];
+        String e = combi3[4];
         
         message.setText("L'ordinateur a déjà choisi sa combinaison.\nA vous de trouver laquelle c'est...\n\nRentrez votre nom,\nCliquez sur le numéro de la colonne\nPuis sur la couleur que vous souhaitez\nmettre");
 //        message.setText(a+b+c+d+e); // permet d'afficher la combi a trouver 
@@ -309,10 +309,6 @@ public class fenetreDeJeu_difficile extends javax.swing.JFrame {
         String prenom = nomjoueurgraph.getText();
         if(nbR == 5){
             message.setText("Bravo "+prenom+" ! Vous avez gagné !");
-            PrintWriter writer = new PrintWriter(prenom+".txt");
-            writer.println(nomjoueur);
-            writer.println("Ce joueur a gagné en " + nbtour + " tours.");
-            writer.close();
         }
         else if(numligne==14){
             message.setText("Dommage, c'est perdu...");

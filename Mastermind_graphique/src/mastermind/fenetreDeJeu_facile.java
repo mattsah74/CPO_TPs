@@ -51,13 +51,12 @@ public class fenetreDeJeu_facile extends javax.swing.JFrame {
             }
         }
         grillejeu = new Grille(mode);
-        creercombinaison(mode);
-        String a = String.valueOf(combi1[0]);
-        String b = String.valueOf(combi1[1]);
-        String c = String.valueOf(combi1[2]);
-        
+        creercombinaison(mode);  
         message.setText("L'ordinateur a déjà choisi sa combinaison.\nA vous de trouver laquelle c'est...\n\nRentrez votre nom,\nCliquez sur le numéro de la colonne\nPuis sur la couleur que vous souhaitez\nmettre");
-        message.setText(a+b+c);
+        String a = combi1[0]; //Pour faire les test et afficher la combi
+        String b = combi1[1];
+        String c = combi1[2];
+        //message.setText(a+b+c);
         numcase.setText("1ère colonne");
     }
 

@@ -53,11 +53,11 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         message.setText("L'ordinateur a déjà choisi sa combinaison.\nA vous de trouver laquelle c'est...\n\nRentrez votre nom,\nCliquez sur le numéro de la colonne\nPuis sur la couleur que vous souhaitez\nmettre");
         grillejeu = new Grille(mode);
         creercombinaison(mode);
-        String a = String.valueOf(combi2[0]);
-        String b = String.valueOf(combi2[1]);
-        String c = String.valueOf(combi2[2]);
-        String d = String.valueOf(combi2[3]);
-        message.setText(a+b+c+d);
+        String a = combi2[0]; //Pour faire les test et afficher la combi
+        String b = combi2[1];
+        String c = combi2[2];
+        String d = combi2[3];
+        //message.setText(a+b+c+d);
         numcase.setText("1ère colonne");
     }
 
@@ -76,8 +76,8 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         pan_indice = new javax.swing.JPanel();
         pan_infojeu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        nomjoueurgraph = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        nomjoueurgraph = new javax.swing.JTextField();
         btn1 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
@@ -86,14 +86,15 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         pan_couleur = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         numcase = new javax.swing.JLabel();
-        btn_valider = new javax.swing.JButton();
         btn_bleu1 = new javax.swing.JButton();
         btn_rouge = new javax.swing.JButton();
         btn_vert = new javax.swing.JButton();
         btn_jaune = new javax.swing.JButton();
+        btn_valider = new javax.swing.JButton();
         pan_message1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         message = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(10, 0));
@@ -106,18 +107,21 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         pan_infojeu.setBackground(new java.awt.Color(0, 153, 204));
         pan_infojeu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("MASTERMIND");
-        pan_infojeu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        pan_infojeu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setText("Nom du Joueur : ");
+        pan_infojeu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        nomjoueurgraph.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         nomjoueurgraph.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomjoueurgraphActionPerformed(evt);
             }
         });
-        pan_infojeu.add(nomjoueurgraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 100, -1));
-
-        jLabel2.setText("Nom du Joueur : ");
-        pan_infojeu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        pan_infojeu.add(nomjoueurgraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 45, 100, -1));
 
         getContentPane().add(pan_infojeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 280, 90));
 
@@ -166,18 +170,11 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("Choisissez la couleur pour la ");
+        jLabel4.setToolTipText("");
         pan_couleur.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 20));
 
         numcase.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         pan_couleur.add(numcase, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 10, 110, 20));
-
-        btn_valider.setText("Valider");
-        btn_valider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_validerActionPerformed(evt);
-            }
-        });
-        pan_couleur.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
         btn_bleu1.setBackground(new java.awt.Color(51, 0, 255));
         btn_bleu1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -224,44 +221,41 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
         });
         pan_couleur.add(btn_jaune, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, 50));
 
+        btn_valider.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btn_valider.setText("Valider");
+        btn_valider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_validerActionPerformed(evt);
+            }
+        });
+        pan_couleur.add(btn_valider, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
         getContentPane().add(pan_couleur, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 390, 280, 210));
 
         pan_message1.setBackground(new java.awt.Color(0, 153, 204));
         pan_message1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        message.setEditable(false);
-        message.setColumns(20);
-        message.setRows(5);
-        jScrollPane2.setViewportView(message);
+        jScrollPane1.setOpaque(false);
 
-        pan_message1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 130));
+        message.setEditable(false);
+        message.setBackground(new java.awt.Color(0, 153, 204));
+        message.setColumns(20);
+        message.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        message.setRows(5);
+        message.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        message.setHighlighter(null);
+        jScrollPane1.setViewportView(message);
+
+        pan_message1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 10, 270, 160));
 
         getContentPane().add(pan_message1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 180, 280, 180));
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setText("GRILLE D'INDICE");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 620, -1, -1));
+
         setBounds(0, 0, 1528, 727);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void nomjoueurgraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurgraphActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomjoueurgraphActionPerformed
-
-    private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
-        validation = true;
-        int[] indice= verifiercombi(numligne,mode);
-        int nbR = indice[0];
-        int nbB = indice[1];
-        majgrilleindice(indice, numligne);
-        pan_indice.repaint();
-        message.setText("Pour rappel:\n  Rouge: une bonne couleur bien placée \n  Blanc: une bonne couleur mais mal placée \n \nAttention l'emplacement des indices ne \ncorrespond pas forcément à celui de votre \ncombinaison !");
-        String prenom = nomjoueurgraph.getText();
-        if(nbR == 4){
-            message.setText("Bravo "+prenom+" ! Vous avez gagné !\nFermez cette fenêtre et relancez un autre mode ;) ");
-        }
-        else if(numligne==11){
-            message.setText("Dommage, c'est perdu...");
-        }
-        numligne +=1;
-    }//GEN-LAST:event_btn_validerActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         numcase.setText("1ère colonne");
@@ -311,6 +305,28 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
 //        message.setText(a+b+c+d);
         pan_grillejeu.repaint();
     }//GEN-LAST:event_btn_jauneActionPerformed
+
+    private void nomjoueurgraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjoueurgraphActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomjoueurgraphActionPerformed
+
+    private void btn_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validerActionPerformed
+        validation = true;
+        int[] indice= verifiercombi(numligne,mode);
+        int nbR = indice[0];
+        int nbB = indice[1];
+        majgrilleindice(indice, numligne);
+        pan_indice.repaint();
+        message.setText("Pour rappel:\n  Rouge: une bonne couleur bien placée \n  Blanc: une bonne couleur mais mal placée \n \nAttention l'emplacement des indices ne \ncorrespond pas forcément à celui de votre \ncombinaison !");
+        String prenom = nomjoueurgraph.getText();
+        if(nbR == 5){
+            message.setText("Bravo "+prenom+" ! Vous avez gagné !");
+        }
+        else if(numligne==14){
+            message.setText("Dommage, c'est perdu...");
+        }
+        numligne +=1;
+    }//GEN-LAST:event_btn_validerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,9 +450,10 @@ public class fenetreDeJeu_moyen extends javax.swing.JFrame {
     private javax.swing.JButton btn_vert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea message;
     private javax.swing.JTextField nomjoueurgraph;
     private javax.swing.JLabel numcase;
